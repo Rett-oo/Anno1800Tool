@@ -9,6 +9,11 @@ class MainWindow(QMainWindow):
         self.button2m_x = 0
         self.property_buttons = []
 
+#vvvvvvv__Добавление словарей для индексации__vvvvvvvv
+        self.props_count_1 = {}
+        self.props_count_2 = {}
+#^^^^^^^__Добавление словарей для индексации__^^^^^^^
+
         list_value_substate = ["2", "3", "5", "1"]
         list_value_substate_05 = ["-2", "-3", "-5", "-1"]
         list_value_substate_2 = ["10", "11"]
@@ -57,12 +62,9 @@ class MainWindow(QMainWindow):
         self.layout.addWidget(substate_1, 1, 0)
         self.layout.addWidget(substate_2, 1, 1)
 
-# !!! +++
-        self.substate_count = {}           # !!! +++ # <----------------------
+        self.substate_count = {}
 
-# добавил  ---------------------------> vvvvvvvvvvvvvvv  <--------------------
         def type_condition(self, types, index_stacked_w):
-            """Создание форм Substate"""
             substate_form = QFormLayout()
             substate_form_2 = QFormLayout()
 
@@ -78,18 +80,8 @@ class MainWindow(QMainWindow):
             tc.addWidget(type_1)
             tc.addWidget(type_2)
 
-# !!! ---            self.substate_count = {}  # останется только последний
-
-###            for i in range(3):              # ??? (3) почему три
-            print(f'\ndef type_condition(self, types):: {types}; {index_stacked_w}\n') #  self.tc_stacked_w
             for i in range(2):
-#                self.substate_count[i, 0] = tc
                 self.substate_count[index_stacked_w, f'substate_{i+1}'] = tc
-# поменял ключ -------------------> ^^^^^^^^^^^^^^^  ^^^^^^^^^^^^^^^^^        <----
-# смотрите что получилось vvvvvvvvvvvvvvvvvvvvvvvvvv
-            for k, v in self.substate_count.items():
-                print(k, v)
-# смотрите что получилось ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
             if types == "Condition_1":
                 for i in list_value_substate:
@@ -123,20 +115,22 @@ class MainWindow(QMainWindow):
 
             return tc
 
-# добавил  -----------------------------------------> v <---------------------
-        init_tc = type_condition(self, "Condition_1", 0)     # index для tc_stacked_w
+        init_tc = type_condition(self, "Condition_1", 0)
         init_tc_2 = type_condition(self, "Condition_2", 1)
         init_tc_3 = type_condition(self, "Condition_3", 2)
-
-        print(f'\ninit_tc =   {init_tc} \ninit_tc_2 = {init_tc_2} \ninit_tc_3 = {init_tc_3}') #
 
         self.tc_stacked_w = QStackedWidget()
         self.tc_stacked_w.addWidget(init_tc)
         self.tc_stacked_w.addWidget(init_tc_2)
         self.tc_stacked_w.addWidget(init_tc_3)
 
-        self.layout.addWidget(self.tc_stacked_w, 2, 0, 5, 2)
+#vvvvvvvvvv__Добавление QStackedWidget для создания property__vvvvvvvvvvvvvvvv
+        self.prop_stacked_tc = QStackedWidget()
+        self.prop_stacked_tc.addWidget(self.tc_stacked_w)
+        self.props_count_1[self.prop_stacked_tc.indexOf(self.tc_stacked_w)] = self.tc_stacked_w
+#^^^^^^^^^__Добавление QStackedWidget для создания property__^^^^^^^^^^
 
+        self.layout.addWidget(self.prop_stacked_tc, 2, 0, 5, 2)
 
         def table(self, types):
             if types == "Condition_1":
@@ -177,6 +171,7 @@ class MainWindow(QMainWindow):
 
                     grid_1.addWidget(QLabel(f"Condition_2 value {row}"))
                     grid_2.addWidget(QLabel(f"Condition_2 value -{row}"))
+
             elif types == "Condition_3":
                 table = QTableWidget(10,1)
                 self.table_row_count = {}
@@ -208,11 +203,19 @@ class MainWindow(QMainWindow):
         self.table_stacked_widget.addWidget(table_1)
         self.table_stacked_widget.addWidget(table_2)
         self.table_stacked_widget.addWidget(table_3)
-        self.layout.addWidget(self.table_stacked_widget, 1, 2, 5, 3)
 
-        def condition_property(self, types):
+#vvvvvvvvvv__Добавление QStackedWidget для создания property__vvvvvvvvvvvvvvvv
+        self.prop_stacked_table = QStackedWidget()
+        self.prop_stacked_table.addWidget(self.table_stacked_widget)
+        self.props_count_2[self.prop_stacked_table.indexOf(self.table_stacked_widget)] = self.table_stacked_widget
+#^^^^^^^^^__Добавление QStackedWidget для создания property__^^^^^^^^^^
+
+        self.layout.addWidget(self.prop_stacked_table, 1, 2, 5, 3)
+
+        self.property_count = {}
+
+        def condition_property(self, types, index_stacked_wi):
             """Doc."""
-            # макет кнопок добавления города
             self.v1_box = QVBoxLayout()
             self.v1_box.setSizeConstraint(QLayout.SetDefaultConstraint)
             self.v1_box.setContentsMargins(0, 0, 0, 0)
@@ -225,12 +228,17 @@ class MainWindow(QMainWindow):
             self.v2_box_2.setContentsMargins(0, 0, 0, 0)
             self.v2_box_2.setAlignment(Qt.AlignTop)
 
+            self.property_count[index_stacked_wi] = self.v2_box_2
+
             if types == "Condition_1":
                 self.scroll_area.setWidget(self.property_widget)
                 self.scroll_area.setWidgetResizable(True)
                 self.v1_box.addWidget(self.scroll_area)
 
                 main_property = QPushButton("Main Property_1")
+                main_property.clicked.connect(lambda: self.prop_stacked_tc.setCurrentIndex(0))
+                main_property.clicked.connect(lambda: self.prop_stacked_table.setCurrentIndex(0))
+#   ^^^^^^^^^^^^__Добавление сигнала основной кнопке__^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
                 self.v2_box_2.addWidget(main_property, alignment=Qt.AlignTop)
 
                 self.button = 1
@@ -246,6 +254,10 @@ class MainWindow(QMainWindow):
                 self.v1_box.addWidget(self.scroll_area)
 
                 main_property = QPushButton('Main Property_2')
+                main_property.clicked.connect(lambda: self.prop_stacked_tc.setCurrentIndex(0))
+                main_property.clicked.connect(lambda: self.prop_stacked_table.setCurrentIndex(0))
+#   ^^^^^^^^^^^^__Добавление сигнала основной кнопке__^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
                 self.v2_box_2.addWidget(main_property, alignment=Qt.AlignTop)
 
                 self.button = 1
@@ -261,6 +273,10 @@ class MainWindow(QMainWindow):
                 self.v1_box.addWidget(self.scroll_area)
 
                 main_property = QPushButton('Main Property_3')
+                main_property.clicked.connect(lambda: self.prop_stacked_tc.setCurrentIndex(0))
+                main_property.clicked.connect(lambda: self.prop_stacked_table.setCurrentIndex(0))
+#   ^^^^^^^^^^^^__Добавление сигнала основной кнопке__^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
                 self.v2_box_2.addWidget(main_property, alignment=Qt.AlignTop)
 
                 self.button = 1
@@ -271,9 +287,9 @@ class MainWindow(QMainWindow):
                     layout=self.v2_box_2: self.add_property(pb, layout))
             return self.v1_box
 
-        prop_1 = condition_property(self,"Condition_1")
-        prop_2 = condition_property(self,"Condition_2")
-        prop_3 = condition_property(self,"Condition_3")
+        prop_1 = condition_property(self,"Condition_1", 0)
+        prop_2 = condition_property(self,"Condition_2", 1)
+        prop_3 = condition_property(self,"Condition_3", 2)
 
         prop_frame1 = QFrame()
         prop_frame1.setLayout(prop_1)
@@ -291,23 +307,16 @@ class MainWindow(QMainWindow):
 
         self.layout.addWidget(self.property_stacked_w,1,5,5,2)
 
-# !!! vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
     def tc(self, text):
-        #print(f'\ndef tc(self, text): {self.tc_stacked_w.currentIndex()}; {text}; \n') #  self.tc_stacked_w
 
         ind = self.tc_stacked_w.currentIndex()
         _stacked_w = self.substate_count.get((ind, text))
-        print(f'\nind = {ind}; text = {text}; ----> {_stacked_w} <----\n')
 
         if text == "substate_1":
             _stacked_w.setCurrentIndex(0)
-#            for i in self.substate_count.values():
-#                i.setCurrentIndex(0)
+
         elif text == "substate_2":
             _stacked_w.setCurrentIndex(1)
-#            for i in self.substate_count.values():
-#                i.setCurrentIndex(1)
-# !!! ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     def table_stacked_w(self, text):
         if text == "substate_1":
@@ -325,7 +334,6 @@ class MainWindow(QMainWindow):
         del_box.setContentsMargins(0, 0, 0, 0)
         del_box.setSpacing(0)
 
-
         self.button2 = QPushButton("New property:")
         self.button2.setMinimumSize(100,35)
         self.button -= layout.indexOf(self.button2)
@@ -339,8 +347,25 @@ class MainWindow(QMainWindow):
         del_button.clicked.connect(
                    lambda: self.del_property(del_widget, del_button))
 
-        self.v2_box_2.insertWidget(self.v2_box_2.count()-1, del_widget)
-        self.v2_box_2.insertWidget(self.button+1, pb)
+        index = self.property_stacked_w.currentIndex()
+        stacked_property = self.property_count.get((index))
+
+        stacked_property.insertWidget(self.v2_box_2.count()-1, del_widget)
+        stacked_property.insertWidget(self.button+1, pb)
+#vvvvvvvv__Соединение со слотом__vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+        self.prop_stacked_tc.addWidget(self.tc_stacked_w)
+        self.prop_stacked_table.addWidget(self.table_stacked_widget)
+        index1 = self.tc_stacked_w.currentIndex()
+        index2 = self.table_stacked_widget.currentIndex()
+        stucked1 = self.props_count_1.get((index1))
+        print(stucked1)
+        stucked2 = self.props_count_2.get((index2))
+        print(stucked2)
+        self.button2.clicked.connect(
+            lambda: self.prop_stacked_tc.setCurrentIndex(self.prop_stacked_tc.indexOf(stucked1)))
+        self.button2.clicked.connect(
+            lambda: self.prop_stacked_table.setCurrentIndex(self.prop_stacked_table.indexOf(stucked2)))
+#^^^^^^^^__Соединение со слотом__^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     @pyqtSlot()
     def del_property(self, property_widget, del_button):
@@ -349,7 +374,6 @@ class MainWindow(QMainWindow):
         property_widget.setParent(None)
         property_widget.deleteLater()
         self.property_buttons.remove(del_button)
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

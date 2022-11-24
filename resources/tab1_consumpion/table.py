@@ -417,6 +417,7 @@ def _createtable(self, region):
                     column3_g_box2.addWidget(
                         self.findChild(
                             QLabel, "7_house_tier7.png"), 2, 0, 1, 1)
+
             else:
                 if column_pop in ("Champagne.webp", "Jewelry.webp",
                                   "Gramophone.webp",

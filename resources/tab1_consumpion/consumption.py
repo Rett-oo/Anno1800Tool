@@ -379,11 +379,17 @@ def _consumptiontab(self):
                                   QSizePolicy.Maximum, QSizePolicy.Fixed))
     self.searchTable_vbox.addLayout(self.search_box)
 
+    self.table_count = []
     table_1 = _createtable(self, "Old_World")
+    self.table_count.append(self.table_row_column)
     table_2 = _createtable(self, "New_World")
+    self.table_count.append(self.table_row_column)
     table_3 = _createtable(self, "Cape_Trelawney")
+    self.table_count.append(self.table_row_column)
     table_4 = _createtable(self, "The_Arctic")
+    self.table_count.append(self.table_row_column)
     table_5 = _createtable(self, "Enbesa")
+    self.table_count.append(self.table_row_column)
 
     self.table_stackedW = QStackedWidget()
     self.table_stackedW.setContentsMargins(0, 0, 0, 0)
@@ -415,8 +421,8 @@ def _consumptiontab(self):
     region1.setMinimumSize(32, 23)
     region1.clicked.connect(
         lambda: self.table_stackedW.setCurrentIndex(0))    # +++
-    # region1.clicked.connect(
-    #     lambda: self.regionForm_stackedW.setCurrentIndex(0))
+    region1.clicked.connect(
+        lambda: self.regionForm_stackedW.setCurrentIndex(0))
     region1.clicked.connect(
         lambda: self.city_stacked_w.setCurrentIndex(0))      # ++++
     region1.setObjectName("Old_World")
@@ -424,32 +430,32 @@ def _consumptiontab(self):
     region2.setMinimumSize(32, 23)
     region2.clicked.connect(
         lambda: self.table_stackedW.setCurrentIndex(1))
-    # region2.clicked.connect(
-    #     lambda: self.regionForm_stackedW.setCurrentIndex(1))
+    region2.clicked.connect(
+        lambda: self.regionForm_stackedW.setCurrentIndex(1))
     region2.clicked.connect(
         lambda: self.city_stacked_w.setCurrentIndex(1))
     region3 = PushButton_R("Cape_Trelawney")
     region3.setMinimumSize(32, 23)
     region3.clicked.connect(
         lambda: self.table_stackedW.setCurrentIndex(2))
-    # region3.clicked.connect(
-    #     lambda: self.regionForm_stackedW.setCurrentIndex(2))
+    region3.clicked.connect(
+        lambda: self.regionForm_stackedW.setCurrentIndex(2))
     region3.clicked.connect(
         lambda: self.city_stacked_w.setCurrentIndex(2))
     region4 = PushButton_R("The_Arctic")
     region4.setMinimumSize(32, 23)
     region4.clicked.connect(
         lambda: self.table_stackedW.setCurrentIndex(3))
-    # region4.clicked.connect(
-    #     lambda: self.regionForm_stackedW.setCurrentIndex(3))
+    region4.clicked.connect(
+        lambda: self.regionForm_stackedW.setCurrentIndex(3))
     region4.clicked.connect(
         lambda: self.city_stacked_w.setCurrentIndex(3))
     region5 = PushButton_R("Enbesa")
     region5.setMinimumSize(32, 23)
     region5.clicked.connect(
         lambda: self.table_stackedW.setCurrentIndex(4))
-    # region5.clicked.connect(
-    #     lambda: self.regionForm_stackedW.setCurrentIndex(4))
+    region5.clicked.connect(
+        lambda: self.regionForm_stackedW.setCurrentIndex(4))
     region5.clicked.connect(
         lambda: self.city_stacked_w.setCurrentIndex(4))
 

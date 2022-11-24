@@ -168,7 +168,7 @@ class MainWindow(QMainWindow):
             popul = int(self.edit_.text())
         except ValueError:
             self.edit_.setText("0")
-            popul = int(self.edit_.text())
+            popul = 0
         proizv = int(self.column4_le.text())
         col2 = int(self.column2_text.text())
 
@@ -179,16 +179,19 @@ class MainWindow(QMainWindow):
 
     def column3_stacked_w(self, text):
         """Doc."""
+        ind = self.table_stackedW.currentIndex()
+        _stacked_w_list = self.table_count
+        _stacked_w = _stacked_w_list[ind]
         if text == "People":
-            for r in self.table_row_column.values():
+            for r in _stacked_w.values():
                 r.setCurrentIndex(0)
         elif text == "Home":
-            for r in self.table_row_column.values():
+            for r in _stacked_w.values():
                 r.setCurrentIndex(1)
 
     def forms_stackedW(self, text):
         """Doc."""
-        ind = self.table_stackedW.currentIndex()
+        ind = self.regionForm_stackedW.currentIndex()
         _stacked_w = self.stacked_form_count.get((ind, text))
 
         if text == "type_1":
