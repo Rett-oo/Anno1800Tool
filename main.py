@@ -20,6 +20,7 @@ from PyQt5.QtWidgets import (QAction, QApplication, QDesktopWidget,
                              QMenu, QVBoxLayout, QWidget, QStackedWidget)
 import resources
 from painter import *  # noqa
+from resources.settings import Widget_settings    # noqa
 
 
 class MainWindow(QMainWindow):
@@ -106,7 +107,8 @@ class MainWindow(QMainWindow):
                 lambda: self.tab_stackedW.setCurrentIndex(6))
             settings_btn = PushButton_si("settings")
             settings_btn.setFixedSize(30, 30)
-            # Кнопки Settings и Info
+            settings_btn.clicked.connect(self.open_settings)
+
             info_btn = PushButton_si("info")
             info_btn.setFixedSize(30, 30)
             settingsInfo_vbox.addWidget(settings_btn)
@@ -243,6 +245,11 @@ class MainWindow(QMainWindow):
         city_widget.setParent(None)
         city_widget.deleteLater()
         self.buttons_city.remove(del_button)
+
+    def open_settings(self):
+        """Doc."""
+        self.settings_win = Widget_settings(self)
+        self.settings_win.show()
 
     def _createActions(self):       # button click actions
         self.newfileAction = QAction('&New', self)
