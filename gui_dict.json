@@ -1,0 +1,52 @@
+// В данном файле содержатся названия файлов для вызова их в основном блоке кода.
+
+// Расшифровка аббревиатур:
+
+    // первое значени в названии - тип изображения: (i, bg,)
+    // i   - icon
+    // bg  - background
+
+    // второе значение в названии - группа изоборажения: (ip, itu, cg, fdv, sa, cm)
+    // ip  - item people
+    // itu - item trade union
+    // iho - item harbourmaster's office
+    // ith - item town hall
+    // iz  - item zoo
+    // im  - item museum
+    // ibg - item botanical garden
+
+    // cg  - consumer goods
+    // fdv - food, drink, venue
+    // sa  - shopping arcades
+    // mf  - multifactories
+
+    // cm  - construction materials
+    // rm  - row materials
+    // ap  - agricultural products
+    // ip  - intermediate products
+    // sr  - strategic resources
+
+    // rb  - residential buildings
+    // p   - population
+
+
+    // третье значение в названии(опционально) - сезон: (s3,s4)
+    // s3  - season 3
+    // s4  - season 4
+
+    // четвёртое значение в названии - название предмета
+
+{
+    "icon": [
+        {"item_people": [
+
+        ]},
+        {"item_trade_union": [
+
+        ]}
+
+
+    ]
+}
+
+

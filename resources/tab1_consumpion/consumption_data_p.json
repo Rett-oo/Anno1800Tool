@@ -1,0 +1,615 @@
+{
+  "Old_World": [
+    {"Fish.webp": [
+      "2",
+      "0.0025",
+      "0.0025"
+    ]},
+    {"Schnapps.webp": [
+      "2",
+      "0.0033",
+      "0.0033"
+    ]},
+    {"Work_clothes.webp": [
+      "2",
+      "0.0031",
+      "0.0031"
+    ]},
+    {"Sausages.webp": [
+      "1",
+      "0.0010",
+      "0.0013"
+    ]},
+    {"Bread.webp": [
+      "1",
+      "0.0009",
+      "0.0012",
+      "0.0010"
+    ]},
+    {"Soap.webp": [
+      "2",
+      "0.0004",
+      "0.0006"
+    ]},
+    {"Beer.webp": [
+      "1",
+      "0.0008",
+      "0.0010"
+    ]},
+    {"Canned_food.webp": [
+      "0.667",
+      "0.0003",
+      "0.0005",
+      "0.0005"
+    ]},
+    {"Sewing_machines.webp":[
+      "2",
+      "0.0010",
+      "0.0014"
+    ]},
+    {"Fur_Coats.webp":[
+      "2",
+      "0.0009",
+      "0.0013",
+      "0.0020"
+    ]},
+    {"Glasses.webp":[
+      "0.667",
+      "0.0002",
+      "0.0004"
+    ]},
+    {"High_wheeler.webp": [
+      "2",
+      "0.0006",
+      "0.0010"
+    ]},
+    {"Pocket_watch.webp": [
+      "0.667",
+      "0.0002",
+      "0.0003"
+    ]},
+    {"Light_bulb.webp": [
+      "1",
+      "0.0003",
+      "0.0005"
+    ]},
+    {"Champagne.webp": [
+      "2",
+      "0.0005"
+    ]},
+    {"Jewelry.webp": [
+      "2",
+      "0.0004",
+      "0.0020"
+    ]},
+    {"Gramophone.webp": [
+      "0.5",
+      "0.0001",
+      "0.0003"
+    ]},
+    {"Steam_carriages.webp": [
+      "1",
+      "0.0001"
+    ]},
+    {"Rum.webp": [
+      "2",
+      "0.0019",
+      "0.0029",
+      "0.0004"
+    ]},
+    {"Advanced_rum_roaster.png": [
+      "2",
+      "0.0019",
+      "0.0029",
+      "0.0004"
+    ]},
+    {"Coffee.webp": [
+       "2",
+       "0.0012",
+       "0.0019"
+    ]},
+    {"Advanced_coffee_roaster.png": [
+      "2",
+      "0.0012",
+      "0.0019"
+    ]},
+    {"Bowler_hats.webp": [
+      "2",
+      "0.0004"
+    ]},
+    {"Cigars.webp": [
+      "2",
+      "0.0004"
+    ]},
+    {"Chocolate.webp": [
+      "2",
+      "0.0011"
+    ]},
+    {"Icon_hibiscus_tea_0.webp": [
+      "0.667",
+      "0.0009"
+    ]},
+    {"Icon_tapestries_0.webp": [
+      "2",
+      "0.0006"
+    ]},
+    {"Icon_wat_stew_0.webp": [
+      "1",
+      "0.0008"
+    ]},
+    {"Icon_tobacco_pipes_0.webp": [
+      "0.667",
+      "0.0004"
+    ]},
+    {"Icon_leather_shoes_0.webp": [
+      "1",
+      "0.0010"
+    ]},
+    {"Icon_suits_0.webp": [
+      "1",
+      "0.0014"
+    ]},
+    {"Icon_telephones_0.webp": [
+      "0.667",
+      "0.0008"
+    ]},
+    {"Jam.webp": [
+      "2",
+      "0.0020"
+    ]},
+    {"Shampoo.webp": [
+      "2",
+      "0.0010"
+    ]},
+    {"Lemonade.webp": [
+      "2",
+      "0.0020"
+    ]},
+    {"Souvenirs.webp": [
+      "2",
+      "0.0040"
+    ]},
+    {"Chewing_Gum.webp": [
+      "2",
+      "0.0001",
+      "0.0001"
+    ]},
+    {"Biscuits.webp": [
+      "2",
+      "0.0005"
+    ]},
+    {"Cognac.webp": [
+      "1",
+      "0.0002"
+    ]},
+    {"Typewriters.webp": [
+      "2",
+      "0.0002",
+      "0.0003"
+    ]},
+    {"Billiard_Tables.webp": [
+      "1",
+      "0.0003"
+    ]},
+    {"Violins.webp": [
+      "1",
+      "0.0001",
+      "0.0001"
+    ]},
+    {"Toys.webp": [
+      "1",
+      "0.0001"
+    ]},
+    {"People_id": [
+      "1_Farmers.webp",
+      "2_Workers.webp",
+      "3_Artisans.webp",
+      "4_Engineers.webp",
+      "5_Investors.webp",
+      "6_Icon_resident_scholars_0.webp",
+      "7_Tourists.webp"
+    ]}
+
+  ],
+
+  "New_World": [
+    {"Fried_plantains.webp": [
+      "2",
+      "0,0029",
+      "0,0029",
+      "0,0014",
+      "0,0014"
+    ]},
+    {"Poncho.webp": [
+      "2",
+      "0,0025",
+      "0,0025",
+      "0,0013",
+      "0,0012"
+    ]},
+    {"Tortilla.webp":[
+      "2",
+      "0,0014",
+      "0,0007"
+    ]},
+    {"Coffee.webp":[
+      "2",
+      "0,0006",
+      "0,0003"
+    ]},
+    {"Advanced_coffee_roaster.png":[
+      "2",
+      "0,0006",
+      "0,0003"
+    ]},
+    {"Rum.webp": [
+      "2",
+      "0,0014",
+      "0,0014",
+      "0,0007",
+      "0,0007"
+    ]},
+    {"Advanced_rum_roaster.png": [
+      "2",
+      "0,0014",
+      "0,0014",
+      "0,0007",
+      "0,0007"
+    ]},
+    {"Beer.webp": [
+      "1",
+      "0,0013",
+      "0,0007"
+    ]},
+    {"Beer_Hacienda.png": [
+      "1",
+      "0,0013",
+      "0,0007"
+
+    ]},
+    {"Sewing_machines.webp": [
+      "2",
+      "0,0013",
+      "0,0006"
+    ]},
+    {"Bowler_hats.webp": [
+      "2",
+      "0,0013",
+      "0,0007"
+    ]},
+    {"Cigars.webp": [
+      "2",
+      "0,0006",
+      "0,0003"
+    ]},
+    {"Schnapps_Hacienda.png": [
+      "2",
+      "0,0017"
+    ]},
+    {"Atole.webp": [
+      "1",
+      "0,0014"
+    ]},
+    {"Hot_Sauce.webp": [
+      "0.5",
+      "0,0013",
+      "0,0007"
+    ]},
+    {"People_id": [
+      "8_Jornaleros.webp",
+      "9_Obreros.webp",
+      "8_Jornaleros.webp",
+      "9_Obreros.webp"
+    ]}
+  ],
+  "Cape_Trelawney": [
+    {"Fish.webp": [
+      "2",
+      "0,0250",
+      "0,0500"
+    ]},
+    {"Schnapps.webp": [
+      "2",
+      "0,0333",
+      "0,0667"
+    ]},
+    {"Work_clothes.webp": [
+      "2",
+      "0,0308",
+      "0,0615"
+    ]},
+    {"Sausages.webp": [
+      "1",
+      "0,0200",
+      "0,0400"
+    ]},
+    {"Bread.webp": [
+      "1",
+      "0,0182",
+      "0,0364",
+      "0,5000"
+    ]},
+    {"Soap.webp": [
+      "2",
+      "0,0083",
+      "0,0167"
+    ]},
+    {"Beer.webp": [
+      "1",
+      "0,0154",
+      "0,0308"
+    ]},
+    {"Canned_food.webp": [
+      "0,667",
+      "0,0103",
+      "0,0205",
+      "0,0600"
+    ]},
+    {"Sewing_machines.webp":[
+      "2",
+      "0,0286",
+      "0,0571"
+    ]},
+    {"Fur_Coats.webp":[
+      "2",
+      "0,0267",
+      "0,0533",
+      "1,0000"
+    ]},
+    {"Glasses.webp":[
+      "0,0267",
+      "0,0533",
+      "1,0000"
+    ]},
+    {"High_wheeler.webp": [
+      "2",
+      "0,0250",
+      "0,0500"
+    ]},
+    {"Pocket_watch.webp": [
+      "0,667",
+      "0,0078",
+      "0,0157"
+    ]},
+    {"Light_bulb.webp": [
+      "1",
+      "0,0125",
+      "0,0250"
+    ]},
+    {"Champagne.webp": [
+      "2",
+      "0,0235"
+    ]},
+    {"Jewelry.webp": [
+      "2",
+      "0,0211",
+      "1,0000"
+    ]},
+    {"Gramophone.webp": [
+      "0,5",
+      "0,0053",
+      "0,0420"
+    ]},
+    {"Steam_carriages.webp": [
+      "1",
+      "0,0067"
+    ]},
+    {"Rum.webp": [
+      "2",
+      "0,0571",
+      "0,1143",
+      "0,0480"
+    ]},
+    {"Advanced_rum_roaster.png": [
+      "2",
+      "0,0571",
+      "0,1143",
+      "0,0480"
+    ]},
+    {"Coffee.webp": [
+       "2",
+       "0,0471",
+       "0,0941"
+    ]},
+    {"Advanced_coffee_roaster.png": [
+      "2",
+      "0,0471",
+      "0,0941"
+    ]},
+    {"Bowler_hats.webp": [
+      "2",
+      "0,0480"
+    ]},
+    {"Cigars.webp": [
+      "2",
+      "0,0222"
+    ]},
+    {"Chocolate.webp": [
+      "2",
+      "0,0533"
+    ]},
+    {"Icon_hibiscus_tea_0.webp": [
+      "0,667",
+      "0,1050"
+    ]},
+    {"Icon_tapestries_0.webp": [
+      "2",
+      "0,0750"
+    ]},
+    {"Icon_wat_stew_0.webp": [
+      "1",
+      "0,0900"
+    ]},
+    {"Icon_tobacco_pipes_0.webp": [
+      "0,667",
+      "0,0450"
+    ]},
+    {"Icon_leather_shoes_0.webp": [
+      "1",
+      "0,1200"
+    ]},
+    {"Icon_suits_0.webp": [
+      "1",
+      "0,1650"
+    ]},
+    {"Icon_telephones_0.webp": [
+      "0,667",
+      "0,0900"
+    ]},
+    {"Jam.webp": [
+      "2",
+      "1,0000"
+    ]},
+    {"Shampoo.webp": [
+      "2",
+      "0,5000"
+    ]},
+    {"Lemonade.webp": [
+      "2",
+      "1,0000"
+    ]},
+    {"Souvenirs.webp": [
+      "2",
+      "2,0000"
+    ]},
+    {"Chewing_Gum.webp": [
+      "2",
+      "0,0052",
+      "0,0055"
+    ]},
+    {"Biscuits.webp": [
+      "2",
+      "0,0268"
+    ]},
+    {"Cognac.webp": [
+      "1",
+      "0,0110"
+    ]},
+    {"Typewriters.webp": [
+      "2",
+      "0,0080",
+      "0,0140"
+    ]},
+    {"Billiard_Tables.webp": [
+      "1",
+      "0,0130"
+    ]},
+    {"Violins.webp": [
+      "1",
+      "0,0030",
+      "0,0032"
+    ]},
+    {"Toys.webp": [
+      "1",
+      "0,0056"
+    ]},
+    {"People_id": [
+      "1_Farmers.webp",
+      "2_Workers.webp",
+      "3_Artisans.webp",
+      "4_Engineers.webp",
+      "5_Investors.webp",
+      "6_Icon_resident_scholars_0.webp",
+      "7_Tourists.webp"
+    ]}
+
+  ],
+  "The_Arctic": [
+    {"Schnapps.webp": [
+      "2",
+      "0,0015",
+      "0,0015"
+    ]},
+    {"Canned_food.webp": [
+      "0.667",
+      "0,0006"
+    ]},
+    {"Coffee.webp": [
+      "2",
+      "0,0012"
+    ]},
+    {"Advanced_coffee_roaster.png": [
+      "2",
+      "0,0012"
+    ]},
+    {"Pemmican.webp": [
+      "1",
+      "0,0012",
+      "0,0012"
+    ]},
+    {"Sleeping_Bags.webp": [
+      "1",
+      "0,0009"
+    ]},
+    {"Oil_Lamps.webp": [
+      "1",
+      "0,0006"
+    ]},
+    {"Parkas.webp": [
+      "0.667",
+      "0,0012"
+    ]},
+    {"Husky_Sleds.webp": [
+      "1",
+      "0,0009"
+    ]},
+    {"People_id": [
+      "10_Explorers.webp",
+      "11_Technicians.webp"
+    ]}
+  ],
+  "Enbesa" : [
+    {"Icon_goat_milk_0.webp": [
+      "1",
+      "0,0030",
+      "0,0030"
+    ]},
+    {"Icon_traditional_clothing_0.webp": [
+      "1",
+      "0,0015",
+      "0,0015"
+    ]},
+    {"Icon_dried_meat_0.webp": [
+      "2",
+      "0,0021",
+      "0,0021"
+    ]},
+    {"Icon_hibiscus_tea_0.webp": [
+      "0.667",
+      "0,0012",
+      "0,0012"
+    ]},
+    {"Icon_ceramics_0.webp": [
+      "2",
+      "0,0012"
+    ]},
+    {"Icon_tapestries_0.webp": [
+      "2",
+      "0,0012"
+    ]},
+    {"Icon_wat_stew_0.webp": [
+      "1",
+      "0,0011"
+    ]},
+    {"Icon_tobacco_pipes_0.webp": [
+      "0.667",
+      "0,0005"
+    ]},
+    {"Icon_scriptures_0.webp": [
+      "1",
+      "0,0005"
+    ]},
+    {"Icon_lanterns_0.webp": [
+      "1",
+      "0,0009"
+    ]},
+    {"Glasses.webp":[
+      "0.667",
+      "0,0004"
+    ]},
+    {"People_id":[
+      "12_Icon_resident_sheperd_0.webp",
+      "13_Icon_resident_elder_0.webp"
+    ]}
+  ]
+}
