@@ -423,4 +423,94 @@ class ToolButton_DC(QAbstractButton):
         self.update()
 
 
+class PushButton_Settings(QAbstractButton):
+
+    def __init__(self, text, parent=None):
+        super(PushButton_Settings, self).__init__(parent)
+
+        self.pixmap = QPixmap(
+            "resources/images/assets/btn_bg/bg_recipebook_activestate_marker_0.png")
+
+        self.setCheckable(True)
+        self.text = text
+
+    def paintEvent(self, event):
+        """PAINT EVENT."""
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.SmoothPixmapTransform)
+        if self.text == "Exit":
+            self.pixmap = QPixmap("resources/images/assets/btn_bg/bg_recipebook_activestate_marker_3_0.png")
+        if self.underMouse():
+            pix = self.pixmap
+            painter.setOpacity(0.5)
+            painter.drawPixmap(self.rect(), pix)
+        elif self.isDown():
+            pix = self.pixmap
+            painter.setOpacity(0.75)
+            painter.drawPixmap(self.rect(), pix)
+        else:
+            pix = self.pixmap
+            painter.drawPixmap(self.rect(), pix)
+
+        painter.setRenderHint(QPainter.TextAntialiasing)
+        painter.setPen(QColor("#1a1918"))
+        if self.text == "Exit":
+            painter.setPen(QColor("#fff4d7"))
+        painter.setFont(QFont("Heuristica", 12))
+        painter.drawText(self.rect(), Qt.AlignCenter, self.text)
+
+
+    def enterEvent(self, event):
+        """MOUSE ON BUTTON EVENT."""
+        self.update()
+
+    def leaveEvent(self, event):
+        """MOUSE LEAVE BUTTON EVENT."""
+        self.update()
+
+
+class PushButton_HC(QAbstractButton):
+
+    def __init__(self, text, parent=None):
+        super(PushButton_HC, self).__init__(parent)
+
+        self.pixmap = QPixmap(
+            "resources/images/assets/btn_bg/btn_icon60_orange_0.png")
+
+        self.setCheckable(True)
+        self.text = text
+
+    def paintEvent(self, event):
+        """PAINT EVENT."""
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.SmoothPixmapTransform)
+        if self.text == "Hide":
+            self.pixmap = QPixmap("resources/images/assets/btn_bg/btn_icon60_gray_0.png")
+        if self.underMouse():
+            pix = self.pixmap
+            painter.setOpacity(0.5)
+            painter.drawPixmap(self.rect(), pix)
+        elif self.isDown():
+            pix = self.pixmap
+            painter.setOpacity(0.9)
+            painter.drawPixmap(self.rect(), pix)
+        else:
+            pix = self.pixmap
+            painter.drawPixmap(self.rect(), pix)
+
+        painter.setRenderHint(QPainter.TextAntialiasing)
+        painter.setPen(QColor("#fff4d7"))
+        painter.setFont(QFont("Heuristica", 12))
+        if self.text == "Exit":
+            painter.drawText(self.rect(), Qt.AlignCenter, "X")
+        else:
+            painter.drawText(self.rect(), Qt.AlignCenter, "_")
+
+    def enterEvent(self, event):
+        """MOUSE ON BUTTON EVENT."""
+        self.update()
+
+    def leaveEvent(self, event):
+        """MOUSE LEAVE BUTTON EVENT."""
+        self.update()
 # text color: fff4d7 f4d700 ff817f87
