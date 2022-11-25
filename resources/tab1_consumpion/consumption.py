@@ -369,8 +369,15 @@ def _consumptiontab(self):
 
     searchbutton = PushButton_F('Filters')
     searchbutton.setMinimumSize(100, 20)
+
     searchedit = QLineEdit()
     searchedit.setObjectName("search_e")
+
+    word_list = ["fish", "schnapps", "work clothes", "sausages"]
+
+    completer = QCompleter(word_list, self)
+    completer.setCaseSensitivity(Qt.CaseInsensitive)
+    searchedit.setCompleter(completer)
 
     searchedit.setMinimumSize(290, 20)
     self.search_box.addWidget(searchbutton)
