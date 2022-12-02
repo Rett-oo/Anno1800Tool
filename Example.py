@@ -1,27 +1,27 @@
 import sys
 import requests
-from PyQt5.QtWidgets import QGridLayout, QWidget, QPushButton, QVBoxLayout, \
-    QLabel, QHBoxLayout, QApplication
-from PyQt5.QtGui import QPainter, QPixmap, QImage
-from PyQt5.QtCore import *  # noqa
-from painter import *  # noqa
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.Qt import *
 
 
 class Widget_settings(QWidget):
-    """Doc."""
-
-    def __init__(self, parent=QMainWindow):
-        """Doc."""
+# ------------------> ^^^^^^^  vvvvvvvvvvv <------------------------  # ???
+#    def __init__(self, parent=QMainWindow):
+    def __init__(self, parent=None):                                  # +++
         super().__init__()
-
         self.initSubWindow()
 
+        self.pressing = False                                         # +++
+
     def paintEvent(self, event):
-        """PAINT EVENT."""
         QWidget.paintEvent(self, event)
+
+
         url = "https://6kcmxu3d7l.a.trbcdn.net/upload/files-new/f5/1c/3d/562610_1000x1000.jpg"
         pix = QPixmap()
         pix.loadFromData(requests.get(url).content)
+
+
         painter = QPainter(self)
         painter.setRenderHint(QPainter.SmoothPixmapTransform)
         painter.drawPixmap(self.rect(), pix)
@@ -74,7 +74,10 @@ class Widget_settings(QWidget):
         quit_btn = QPushButton("Exit")
         quit_btn.setMinimumSize(100, 35)
         quit_btn.setMaximumSize(135, 55)
-        quit_btn.clicked.connect(self.closeEvent)
+
+# ------------------------------> vvvvvvvvvvvcccc <------------------------  # ???
+#        quit_btn.clicked.connect(self.closeEvent)
+        quit_btn.clicked.connect(self.close)                                 # +++
 
         mainBtn_vbox.addWidget(settings1, alignment=Qt.AlignTop)
         mainBtn_vbox.addWidget(settings2, alignment=Qt.AlignTop)
@@ -83,14 +86,20 @@ class Widget_settings(QWidget):
 
     def mousePressEvent(self, event):
         self.oldPosition = event.globalPos()
+        self.pressing = True                                          # +++
 
     def mouseMoveEvent(self, event):
-        delta = QPoint(event.globalPos() - self.oldPosition)
-        self.move(self.x() + delta.x(), self.y() + delta.y())
-        self.oldPosition = event.globalPos()
+        if self.pressing:                                             # +++
+            delta = QPoint(event.globalPos() - self.oldPosition)
+            self.move(self.x() + delta.x(), self.y() + delta.y())
+            self.oldPosition = event.globalPos()
+
+    def mouseReleaseEvent(self, event):                               # +++
+        self.pressing = False                                         # +++
 
     def closeEvent(self, event):
         event.accept()
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

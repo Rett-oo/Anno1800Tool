@@ -424,12 +424,14 @@ class ToolButton_DC(QAbstractButton):
 
 
 class PushButton_Settings(QAbstractButton):
+    """PAINT SETTINGS BUTTONS."""
 
     def __init__(self, text, parent=None):
+        """INIT CLASS."""
         super(PushButton_Settings, self).__init__(parent)
 
         self.pixmap = QPixmap(
-            "resources/images/assets/btn_bg/bg_recipebook_activestate_marker_0.png")
+            "resources/images/assets/btn_bg/bg_recipebook_activestate_marker_0.png")  # noqa
 
         self.setCheckable(True)
         self.text = text
@@ -439,7 +441,8 @@ class PushButton_Settings(QAbstractButton):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.SmoothPixmapTransform)
         if self.text == "Exit":
-            self.pixmap = QPixmap("resources/images/assets/btn_bg/bg_recipebook_activestate_marker_3_0.png")
+            self.pixmap = QPixmap(
+                "resources/images/assets/btn_bg/bg_recipebook_activestate_marker_3_0.png")  # noqa
         if self.underMouse():
             pix = self.pixmap
             painter.setOpacity(0.5)
@@ -459,7 +462,6 @@ class PushButton_Settings(QAbstractButton):
         painter.setFont(QFont("Heuristica", 12))
         painter.drawText(self.rect(), Qt.AlignCenter, self.text)
 
-
     def enterEvent(self, event):
         """MOUSE ON BUTTON EVENT."""
         self.update()
@@ -470,8 +472,10 @@ class PushButton_Settings(QAbstractButton):
 
 
 class PushButton_HC(QAbstractButton):
+    """PAINT HIDE AND CLOSE BUTTONS IN SETTINGS TAB."""
 
     def __init__(self, text, parent=None):
+        """INIT CLASS."""
         super(PushButton_HC, self).__init__(parent)
 
         self.pixmap = QPixmap(
@@ -485,7 +489,8 @@ class PushButton_HC(QAbstractButton):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.SmoothPixmapTransform)
         if self.text == "Hide":
-            self.pixmap = QPixmap("resources/images/assets/btn_bg/btn_icon60_gray_0.png")
+            self.pixmap = QPixmap(
+                "resources/images/assets/btn_bg/btn_icon60_gray_0.png")
         if self.underMouse():
             pix = self.pixmap
             painter.setOpacity(0.5)

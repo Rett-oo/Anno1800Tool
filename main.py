@@ -248,8 +248,30 @@ class MainWindow(QMainWindow):
 
     def open_settings(self):
         """Doc."""
-        self.settings_win = Widget_settings(self)
-        self.settings_win.show()
+        if not Widget_settings.isEnabled(self):
+            pass
+        else:
+            ws = Widget_settings(self)
+            ws.show()
+            print("false")
+
+
+
+    def closeMWindow(self):
+        self.close
+
+    def closeEvent(self, event):
+        """CLOSE EVENT."""
+        reply = QMessageBox.question(
+            self, "Message",
+            "Are you sure you want to quit? Any unsaved work will be lost.",
+            QMessageBox.Save | QMessageBox.Close | QMessageBox.Cancel,
+            QMessageBox.Save)
+
+        if reply == QMessageBox.Close:
+            event.accept()
+        else:
+            event.ignore()
 
     def _createActions(self):       # button click actions
         self.newfileAction = QAction('&New', self)
