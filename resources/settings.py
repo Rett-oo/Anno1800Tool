@@ -106,8 +106,5 @@ class Widget_settings(QWidget):
         self.pressing = False
 
     def exitApp(self):
+        """Doc."""
         self.parent.close()
-
-    # def keyPressEvent(self, event):
-    #     if event.key() == Qt.Key_Escape:
-    #         self.close()

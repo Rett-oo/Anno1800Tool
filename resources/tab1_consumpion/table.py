@@ -1,12 +1,11 @@
 """Doc."""
 import json
-from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLineEdit, \
-    QLabel, QAction, QMainWindow, QMenu, QDesktopWidget, QHBoxLayout, \
-    QGridLayout, QVBoxLayout, QTableWidget, QTableWidgetItem, QLayout, \
-    QFormLayout, QFrame, QAbstractItemView, QSpacerItem, QSizePolicy, QStackedWidget, QFrame  # noqa
+from PyQt5.QtWidgets import QPushButton, QLineEdit, \
+    QLabel, QHBoxLayout, QGridLayout, QTableWidget, \
+    QFrame, QAbstractItemView, QStackedWidget, QTableWidgetItem
 from PyQt5 import QtWidgets, QtCore, QtGui
 from PyQt5.QtGui import QIcon, QPixmap
-from PyQt5.QtCore import QSize, Qt, QModelIndex, QObject  # noqa
+from PyQt5.QtCore import QSize, Qt  # noqa
 from shiboken6 import isValid  # noqa
 from resources import gui_icons  # noqa
 
@@ -41,7 +40,7 @@ class HighlightDelegate(QtWidgets.QStyledItemDelegate):
         painter.restore()
 
 
-def _createtable(self, region):
+def _createtable(self, region: str) -> QTableWidget:
 
     valid = QtCore.QRegExp("[0-9 .,]{15}")
     val = QtGui.QRegExpValidator(valid)
@@ -65,14 +64,15 @@ def _createtable(self, region):
         self.table_row_column = {}
 
         # создание иконок для 3 колонки
-        for iz in range(table.rowCount()):
+        for i in range(table.rowCount()):
             for people in json_table[region][-1].values():
                 for people_icon_id in people:
                     pop_label_p = QLabel(self)
                     pop_label_p.move(0, -100)
                     pop_label_p.setAlignment(Qt.AlignRight)
                     pop_label_p.setPixmap(
-                        QPixmap(":" + people_icon_id).scaled(25, 25))
+                        QPixmap(":" + people_icon_id).scaled(
+                            25, 25, transformMode=Qt.SmoothTransformation))
                     pop_label_p.setObjectName(f"{people_icon_id}")
 
             for homes in json_table2[region][-1].values():
@@ -81,20 +81,23 @@ def _createtable(self, region):
                     pop_label_h.move(0, -100)
                     pop_label_h.setAlignment(Qt.AlignRight)
                     pop_label_h.setPixmap(
-                        QPixmap(":" + home_icon_id).scaled(25, 25))
+                        QPixmap(":" + home_icon_id).scaled(
+                            25, 25, transformMode=Qt.SmoothTransformation))
                     pop_label_h.setObjectName(f"{home_icon_id}")
 
         for row in range(table.rowCount()):
             # 1 column
-            column1_h_box = QHBoxLayout()
             column1_frame = QFrame()
+            column1_h_box = QHBoxLayout()
+            column1_h_box.setContentsMargins(0, 0, 0, 0)
             column1_frame.setLayout(column1_h_box)
+
             column_pop = column1.pop(0)
             column1_pb = QPushButton(QIcon(":" + column_pop), '')
             column1_pb.setMinimumSize(35, 35)
-            column1_pb.setMaximumSize(35, 35)
+            column1_pb.setMaximumSize(75, 45)
             column1_h_box.addWidget(column1_pb)
-            column1_h_box.setContentsMargins(0, 0, 0, 0)
+
             table.setCellWidget(row, 0, column1_frame)
             # 2 column
             self.column2_text = QTableWidgetItem(column2.pop(0))
@@ -110,11 +113,13 @@ def _createtable(self, region):
             column3_stacked_w.addWidget(column3_frame1)
             column3_stacked_w.addWidget(column3_frame2)
             table.setCellWidget(row, 2, column3_stacked_w)
-
+            # создание словаря для индексации.
+            # Переключение виджета внутри региона -> города.
             self.table_row_column[row, 2] = column3_stacked_w
 
             column3_p_value = column3_people.pop(0)
             column3_h_value = column3_home.pop(0)
+
             if len(column3_p_value) == 2:
                 if column_pop in ("Fish.webp",
                                   "Schnapps.webp",
@@ -469,6 +474,7 @@ def _createtable(self, region):
             column4_h_box = QHBoxLayout()
             column4_frame.setLayout(column4_h_box)
             table.setCellWidget(row, 3, column4_frame)
+
             self.column4_le = QLineEdit("100")
             self.column4_le.setValidator(val)
             self.column4_le.setMaxLength(4)
@@ -477,12 +483,13 @@ def _createtable(self, region):
             self.column4_le.setMaximumSize(100, 25)
             self.column4_le.setStyleSheet("background-color: #ced2bc; \
                                 font: 12px;border-radius: 3px; \
-                                font-style: Roboto")
+                                font-style: Heuretica")
             column4_la = QLabel()
             column4_la.setAlignment(Qt.AlignCenter)
             column4_la.setMaximumSize(30, 25)
             column4_la.setPixmap(
-                QPixmap(":free-icon-percent-4688859.png").scaled(15, 15))
+                QPixmap(":free-icon-percent-4688859.png").scaled(
+                    15, 15, transformMode=Qt.SmoothTransformation))
             column4_h_box.addWidget(self.column4_le)
             column4_h_box.addWidget(column4_la)
 
@@ -490,16 +497,22 @@ def _createtable(self, region):
             column5_frame = QFrame()
             column5_h_box = QHBoxLayout()
             column5_frame.setLayout(column5_h_box)
+
             self.column5_la = QLabel("0")
             self.column5_la.setAlignment(Qt.AlignCenter)
-            self.column5_la.setStyleSheet("color: black; font-size: 12px")
+            self.column5_la.setStyleSheet("font-size: 12px")
             column5_h_box.addWidget(self.column5_la)
             table.setCellWidget(row, 4, column5_frame)
-
+            ##############
             self.column4_le.textChanged.connect(self.onTextChanged)
+            self.column4_le.textChanged.connect(
+                lambda text=self.column4_le.text(),
+                col5=self.column5_la,
+                col2=self.column2_text.text():
+                    self.action1(text, col5, col2))
 
     elif region == "New_World":
-        # создание списков для заполнения таблицы
+
         column1 = []
         column2 = []
         column3_people = []
@@ -517,14 +530,15 @@ def _createtable(self, region):
         self.table_row_column = {}
 
         # создание иконок для 3 колонки
-        for iz in range(table.rowCount()):
+        for i in range(table.rowCount()):
             for people in json_table[region][-1].values():
                 for people_icon_id in people:
                     pop_label_p = QLabel(self)
                     pop_label_p.move(0, -100)
                     pop_label_p.setAlignment(Qt.AlignRight)
                     pop_label_p.setPixmap(
-                        QPixmap(":" + people_icon_id).scaled(25, 25))
+                        QPixmap(":" + people_icon_id).scaled(
+                            25, 25, transformMode=Qt.SmoothTransformation))
                     pop_label_p.setObjectName(f"{people_icon_id}")
 
             for homes in json_table2[region][-1].values():
@@ -533,26 +547,30 @@ def _createtable(self, region):
                     pop_label_h.move(0, -100)
                     pop_label_h.setAlignment(Qt.AlignRight)
                     pop_label_h.setPixmap(
-                        QPixmap(":" + home_icon_id).scaled(25, 25))
+                        QPixmap(":" + home_icon_id).scaled(
+                            25, 25, transformMode=Qt.SmoothTransformation))
                     pop_label_h.setObjectName(f"{home_icon_id}")
 
         for row in range(table.rowCount()):
             # 1 column
-            column1_h_box = QHBoxLayout()
             column1_frame = QFrame()
+            column1_h_box = QHBoxLayout()
+            column1_h_box.setContentsMargins(0, 0, 0, 0)
             column1_frame.setLayout(column1_h_box)
+
             column_pop = column1.pop(0)
             column1_pb = QPushButton(QIcon(":" + column_pop), '')
             column1_pb.setMinimumSize(35, 35)
             column1_pb.setMaximumSize(35, 35)
-            column1_pb.setStyleSheet("background-color: brown")
             column1_h_box.addWidget(column1_pb)
-            column1_h_box.setContentsMargins(0, 0, 0, 0)
+
             table.setCellWidget(row, 0, column1_frame)
+
             # 2 column
             column2_text = QTableWidgetItem(column2.pop(0))
             column2_text.setTextAlignment(Qt.AlignCenter)
             table.setItem(row % 60, 1, column2_text)
+
             # 3 column
             column3_frame1 = QFrame()
             column3_g_box1 = QGridLayout(column3_frame1)
@@ -566,9 +584,9 @@ def _createtable(self, region):
 
             self.table_row_column[row, 2] = column3_stacked_w
 
-            # self.column3_stacked_w.setStyleSheet("border: 3px solid black")
             column3_p_value = column3_people.pop(0)
             column3_h_value = column3_home.pop(0)
+
             if len(column3_p_value) == 2:
                 if column_pop in ("Tortilla.webp",
                                   "Coffee.webp",
@@ -685,6 +703,7 @@ def _createtable(self, region):
             column4_h_box = QHBoxLayout()
             column4_frame.setLayout(column4_h_box)
             table.setCellWidget(row, 3, column4_frame)
+
             self.column4_le = QLineEdit("100")
             self.column4_le.setValidator(val)
             self.column4_le.setMaxLength(4)
@@ -692,19 +711,21 @@ def _createtable(self, region):
             self.column4_le.setMinimumSize(50, 20)
             self.column4_le.setMaximumSize(100, 25)
             self.column4_le.setStyleSheet("background-color: #ced2bc; \
-                                font: 12px;border-radius: 3px; \
-                                font-style: Roboto")
+                                font: 12px; font-style: Heuretica")
             column4_la = QLabel()
             column4_la.setAlignment(Qt.AlignCenter)
             column4_la.setMaximumSize(30, 25)
             column4_la.setPixmap(
-                QPixmap(":free-icon-percent-4688859.png").scaled(15, 15))
+                QPixmap(":free-icon-percent-4688859.png").scaled(
+                    15, 15, transformMode=Qt.SmoothTransformation))
             column4_h_box.addWidget(self.column4_le)
             column4_h_box.addWidget(column4_la)
+
             # 5 column
             column5_frame = QFrame()
             column5_h_box = QHBoxLayout()
             column5_frame.setLayout(column5_h_box)
+
             self.column5_la = QLabel("0")
             self.column5_la.setAlignment(Qt.AlignCenter)
             self.column5_la.setStyleSheet("color: black; font-size: 12px")
@@ -718,7 +739,7 @@ def _createtable(self, region):
                     self.action1(text, col5, col2))
 
     elif region == "Cape_Trelawney":
-        # создание списков для заполнения таблицы
+
         column1 = []
         column2 = []
         column3_people = []
@@ -736,14 +757,15 @@ def _createtable(self, region):
         self.table_row_column = {}
 
         # создание иконок для 3 колонки
-        for iz in range(table.rowCount()):
+        for i in range(table.rowCount()):
             for people in json_table[region][-1].values():
                 for people_icon_id in people:
                     pop_label_p = QLabel(self)
                     pop_label_p.move(0, -100)
                     pop_label_p.setAlignment(Qt.AlignRight)
                     pop_label_p.setPixmap(
-                        QPixmap(":" + people_icon_id).scaled(25, 25))
+                        QPixmap(":" + people_icon_id).scaled(
+                            25, 25, transformMode=Qt.SmoothTransformation))
                     pop_label_p.setObjectName(f"{people_icon_id}")
 
             for homes in json_table2[region][-1].values():
@@ -752,26 +774,29 @@ def _createtable(self, region):
                     pop_label_h.move(0, -100)
                     pop_label_h.setAlignment(Qt.AlignRight)
                     pop_label_h.setPixmap(
-                        QPixmap(":" + home_icon_id).scaled(25, 25))
+                        QPixmap(":" + home_icon_id).scaled(
+                            25, 25, transformMode=Qt.SmoothTransformation))
                     pop_label_h.setObjectName(f"{home_icon_id}")
 
         for row in range(table.rowCount()):
             # 1 column
-            column1_h_box = QHBoxLayout()
             column1_frame = QFrame()
+            column1_h_box = QHBoxLayout()
+            column1_h_box.setContentsMargins(0, 0, 0, 0)
             column1_frame.setLayout(column1_h_box)
+
             column_pop = column1.pop(0)
             column1_pb = QPushButton(QIcon(":" + column_pop), '')
             column1_pb.setMinimumSize(35, 35)
             column1_pb.setMaximumSize(35, 35)
-            column1_pb.setStyleSheet("background-color: brown")
             column1_h_box.addWidget(column1_pb)
-            column1_h_box.setContentsMargins(0, 0, 0, 0)
             table.setCellWidget(row, 0, column1_frame)
+
             # 2 column
             column2_text = QTableWidgetItem(column2.pop(0))
             column2_text.setTextAlignment(Qt.AlignCenter)
             table.setItem(row % 60, 1, column2_text)
+
             # 3 column
             column3_frame1 = QFrame()
             column3_g_box1 = QGridLayout(column3_frame1)
@@ -787,6 +812,7 @@ def _createtable(self, region):
 
             column3_p_value = column3_people.pop(0)
             column3_h_value = column3_home.pop(0)
+
             if len(column3_p_value) == 2:
                 if column_pop in ("Fish.webp",
                                   "Schnapps.webp",
@@ -1108,6 +1134,7 @@ def _createtable(self, region):
                     column3_g_box2.addWidget(
                         self.findChild(
                             QLabel, "7_house_tier7.png"), 2, 0, 1, 1)
+
             else:
 
                 if column_pop in ("Champagne.webp", "Jewelry.webp",
@@ -1160,6 +1187,7 @@ def _createtable(self, region):
             column4_h_box = QHBoxLayout()
             column4_frame.setLayout(column4_h_box)
             table.setCellWidget(row, 3, column4_frame)
+
             self.column4_le = QLineEdit("100")
             self.column4_le.setValidator(val)
             self.column4_le.setMaxLength(4)
@@ -1167,19 +1195,21 @@ def _createtable(self, region):
             self.column4_le.setMinimumSize(50, 20)
             self.column4_le.setMaximumSize(100, 25)
             self.column4_le.setStyleSheet("background-color: #ced2bc; \
-                                font: 12px;border-radius: 3px; \
-                                font-style: Roboto")
+                                font: 12px; font-style: Heuretica")
             column4_la = QLabel()
             column4_la.setAlignment(Qt.AlignCenter)
             column4_la.setMaximumSize(30, 25)
             column4_la.setPixmap(
-                QPixmap(":free-icon-percent-4688859.png").scaled(15, 15))
+                QPixmap(":free-icon-percent-4688859.png").scaled(
+                    15, 15, transformMode=Qt.SmoothTransformation))
             column4_h_box.addWidget(self.column4_le)
             column4_h_box.addWidget(column4_la)
+
             # 5 column
             column5_frame = QFrame()
             column5_h_box = QHBoxLayout()
             column5_frame.setLayout(column5_h_box)
+
             self.column5_la = QLabel("0")
             self.column5_la.setAlignment(Qt.AlignCenter)
             self.column5_la.setStyleSheet("color: black; font-size: 12px")
@@ -1194,7 +1224,6 @@ def _createtable(self, region):
 
     elif region == "The_Arctic":
 
-        # создание списков для заполнения таблицы
         column1 = []
         column2 = []
         column3_people = []
@@ -1212,14 +1241,15 @@ def _createtable(self, region):
         self.table_row_column = {}
 
         # создание иконок для 3 колонки
-        for iz in range(table.rowCount()):
+        for i in range(table.rowCount()):
             for people in json_table[region][-1].values():
                 for people_icon_id in people:
                     pop_label_p = QLabel(self)
                     pop_label_p.move(0, -100)
                     pop_label_p.setAlignment(Qt.AlignRight)
                     pop_label_p.setPixmap(
-                        QPixmap(":" + people_icon_id).scaled(25, 25))
+                        QPixmap(":" + people_icon_id).scaled(
+                            25, 25, transformMode=Qt.SmoothTransformation))
                     pop_label_p.setObjectName(f"{people_icon_id}")
 
             for homes in json_table2[region][-1].values():
@@ -1228,21 +1258,23 @@ def _createtable(self, region):
                     pop_label_h.move(0, -100)
                     pop_label_h.setAlignment(Qt.AlignRight)
                     pop_label_h.setPixmap(
-                        QPixmap(":" + home_icon_id).scaled(25, 25))
+                        QPixmap(":" + home_icon_id).scaled(
+                            25, 25, transformMode=Qt.SmoothTransformation))
                     pop_label_h.setObjectName(f"{home_icon_id}")
 
         for row in range(table.rowCount()):
             # 1 column
-            column1_h_box = QHBoxLayout()
             column1_frame = QFrame()
+            column1_h_box = QHBoxLayout()
+            column1_h_box.setContentsMargins(0, 0, 0, 0)
             column1_frame.setLayout(column1_h_box)
+
             column_pop = column1.pop(0)
             column1_pb = QPushButton(QIcon(":" + column_pop), '')
             column1_pb.setMinimumSize(35, 35)
             column1_pb.setMaximumSize(35, 35)
-            column1_pb.setStyleSheet("background-color: brown")
             column1_h_box.addWidget(column1_pb)
-            column1_h_box.setContentsMargins(0, 0, 0, 0)
+
             table.setCellWidget(row, 0, column1_frame)
             # 2 column
             column2_text = QTableWidgetItem(column2.pop(0))
@@ -1263,6 +1295,7 @@ def _createtable(self, region):
 
             column3_p_value = column3_people.pop(0)
             column3_h_value = column3_home.pop(0)
+
             if len(column3_p_value) == 2:
                 column3_g_box1.addWidget(
                     QLabel(column3_p_value.pop(0)), 0, 1, 1, 1)
@@ -1284,6 +1317,7 @@ def _createtable(self, region):
                 column3_g_box2.addWidget(
                     self.findChild(
                         QLabel, "Icon_research_resource_0.webp"), 1, 0, 1, 1)
+
             else:
                 column3_g_box1.addWidget(
                     QLabel(column3_p_value.pop(0)), 0, 1, 1, 1)
@@ -1299,6 +1333,7 @@ def _createtable(self, region):
             column4_h_box = QHBoxLayout()
             column4_frame.setLayout(column4_h_box)
             table.setCellWidget(row, 3, column4_frame)
+
             self.column4_le = QLineEdit("100")
             self.column4_le.setValidator(val)
             self.column4_le.setMaxLength(4)
@@ -1306,22 +1341,23 @@ def _createtable(self, region):
             self.column4_le.setMinimumSize(50, 20)
             self.column4_le.setMaximumSize(100, 25)
             self.column4_le.setStyleSheet("background-color: #ced2bc; \
-                                font: 12px;border-radius: 3px; \
-                                font-style: Roboto")
+                                font: 12px; font-style: Heuretica")
             column4_la = QLabel()
             column4_la.setAlignment(Qt.AlignCenter)
             column4_la.setMaximumSize(30, 25)
             column4_la.setPixmap(
-                QPixmap(":free-icon-percent-4688859.png").scaled(15, 15))
+                QPixmap(":free-icon-percent-4688859.png").scaled(
+                    15, 15, transformMode=Qt.SmoothTransformation))
             column4_h_box.addWidget(self.column4_le)
             column4_h_box.addWidget(column4_la)
             # 5 column
             column5_frame = QFrame()
             column5_h_box = QHBoxLayout()
             column5_frame.setLayout(column5_h_box)
+
             self.column5_la = QLabel("0")
             self.column5_la.setAlignment(Qt.AlignCenter)
-            self.column5_la.setStyleSheet("color: black; font-size: 12px")
+            self.column5_la.setStyleSheet("font-size: 12px")
             column5_h_box.addWidget(self.column5_la)
             table.setCellWidget(row, 4, column5_frame)
 
@@ -1333,7 +1369,6 @@ def _createtable(self, region):
 
     elif region == "Enbesa":
 
-        # создание списков для заполнения таблицы
         column1 = []
         column2 = []
         column3_people = []
@@ -1351,42 +1386,46 @@ def _createtable(self, region):
         self.table_row_column = {}
 
         # создание иконок для 3 колонки
-        for iz in range(table.rowCount()):
+        for i in range(table.rowCount()):
             for people in json_table[region][-1].values():
                 for people_icon_id in people:
                     pop_label_p = QLabel(self)
                     pop_label_p.move(0, -100)
-                    pop_label_p.setAlignment(Qt.AlignRight)
+                    # pop_label_p.setAlignment(Qt.AlignRight)
                     pop_label_p.setPixmap(
-                        QPixmap(":" + people_icon_id).scaled(25, 25))
+                        QPixmap(":" + people_icon_id).scaled(
+                            25, 25, transformMode=Qt.SmoothTransformation))
                     pop_label_p.setObjectName(f"{people_icon_id}")
 
             for homes in json_table2[region][-1].values():
                 for home_icon_id in homes:
                     pop_label_h = QLabel(self)
                     pop_label_h.move(0, -100)
-                    pop_label_h.setAlignment(Qt.AlignRight)
+                    # pop_label_h.setAlignment(Qt.AlignRight)
                     pop_label_h.setPixmap(
-                        QPixmap(":" + home_icon_id).scaled(25, 25))
+                        QPixmap(":" + home_icon_id).scaled(
+                            25, 25, transformMode=Qt.SmoothTransformation))
                     pop_label_h.setObjectName(f"{home_icon_id}")
 
         for row in range(table.rowCount()):
             # 1 column
-            column1_h_box = QHBoxLayout()
             column1_frame = QFrame()
+            column1_h_box = QHBoxLayout()
+            column1_h_box.setContentsMargins(0, 0, 0, 0)
             column1_frame.setLayout(column1_h_box)
+
             column_pop = column1.pop(0)
             column1_pb = QPushButton(QIcon(":" + column_pop), '')
             column1_pb.setMinimumSize(35, 35)
             column1_pb.setMaximumSize(35, 35)
-            column1_pb.setStyleSheet("background-color: brown")
             column1_h_box.addWidget(column1_pb)
-            column1_h_box.setContentsMargins(0, 0, 0, 0)
             table.setCellWidget(row, 0, column1_frame)
+
             # 2 column
             column2_text = QTableWidgetItem(column2.pop(0))
             column2_text.setTextAlignment(Qt.AlignCenter)
             table.setItem(row % 60, 1, column2_text)
+
             # 3 column
             column3_frame1 = QFrame()
             column3_g_box1 = QGridLayout(column3_frame1)
@@ -1402,6 +1441,7 @@ def _createtable(self, region):
 
             column3_p_value = column3_people.pop(0)
             column3_h_value = column3_home.pop(0)
+
             if len(column3_p_value) == 2:
                 column3_g_box1.addWidget(
                     QLabel(column3_p_value.pop(0)), 0, 1, 1, 1)
@@ -1423,6 +1463,7 @@ def _createtable(self, region):
                 column3_g_box2.addWidget(
                     self.findChild(QLabel, "Icon_research_resource_0.webp"),
                     1, 0, 1, 1)
+
             else:
                 column3_g_box1.addWidget(
                     QLabel(column3_p_value.pop(0)), 0, 1, 1, 1)
@@ -1440,6 +1481,7 @@ def _createtable(self, region):
             column4_h_box = QHBoxLayout()
             column4_frame.setLayout(column4_h_box)
             table.setCellWidget(row, 3, column4_frame)
+
             self.column4_le = QLineEdit("100")
             self.column4_le.setValidator(val)
             self.column4_le.setMaxLength(4)
@@ -1447,22 +1489,24 @@ def _createtable(self, region):
             self.column4_le.setMinimumSize(50, 20)
             self.column4_le.setMaximumSize(100, 25)
             self.column4_le.setStyleSheet("background-color: #ced2bc; \
-                                font: 12px;border-radius: 3px; \
-                                font-style: Roboto")
+                                font: 12px; font-style: Heuretica")
             column4_la = QLabel()
             column4_la.setAlignment(Qt.AlignCenter)
             column4_la.setMaximumSize(30, 25)
             column4_la.setPixmap(
-                QPixmap(":free-icon-percent-4688859.png").scaled(15, 15))
+                QPixmap(":free-icon-percent-4688859.png").scaled(
+                    15, 15, transformMode=Qt.SmoothTransformation))
             column4_h_box.addWidget(self.column4_le)
             column4_h_box.addWidget(column4_la)
+
             # 5 column
             column5_frame = QFrame()
             column5_h_box = QHBoxLayout()
             column5_frame.setLayout(column5_h_box)
+
             self.column5_la = QLabel("0")
             self.column5_la.setAlignment(Qt.AlignCenter)
-            self.column5_la.setStyleSheet("color: black; font-size: 12px")
+            self.column5_la.setStyleSheet("font-size: 12px")
             column5_h_box.addWidget(self.column5_la)
             table.setCellWidget(row, 4, column5_frame)
 
@@ -1490,7 +1534,6 @@ def _createtable(self, region):
     table.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
     table.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
     table.setShowGrid(False)
-    table.setGridStyle(Qt.SolidLine)
     table.verticalHeader().setVisible(False)
     table.setSelectionMode(QAbstractItemView.NoSelection)
     table.setEditTriggers(QAbstractItemView.NoEditTriggers)

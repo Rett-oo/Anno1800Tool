@@ -2,7 +2,6 @@
 
 QMainWindow {
 	border-image: url("resources/images/assets/bg/bg_window_bg_expedition_base_0.png") 0 0 0 0;
-
 }
 
 QHeaderView::section {

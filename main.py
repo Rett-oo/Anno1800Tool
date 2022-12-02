@@ -15,12 +15,13 @@ VariabelNameRole_TypeWidget_{VariabelIndex}
 import sys
 from PyQt5.QtCore import pyqtSlot  # noqa
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import (QAction, QApplication, QDesktopWidget,
-                             QGridLayout, QHBoxLayout, QLayout, QMainWindow,
-                             QMenu, QVBoxLayout, QWidget, QStackedWidget)
+from PyQt5.QtWidgets import (QApplication, QDesktopWidget,
+                             QGridLayout, QHBoxLayout, QLayout,
+                             QMainWindow, QVBoxLayout, QWidget, QStackedWidget)
 import resources
 from painter import *  # noqa
-from resources.settings import Widget_settings    # noqa
+from resources.settings import Widget_settings  # noqa
+from resources.tab1_consumpion.setpopulationfunc import _setPopulation
 
 
 class MainWindow(QMainWindow):
@@ -31,8 +32,21 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.initUI()
 
+    # def paintEvent(self, event):
+    #     """PAINT EVENT."""
+    #     QMainWindow.paintEvent(self, event)
+
+    #     painter = QPainter(self)
+    #     painter.setRenderHint(QPainter.SmoothPixmapTransform)
+    #     painter.setPen(QColor("red"))
+    #     painter.drawRect(self.rect())  # noqa
+
         self.button2m_x = 0
         self.buttons_city = []
+        self.countslfbtns0 = []
+        self.countfrm0 = []
+        self.count_city = {"Old_World": [1],
+                           "New_World": [1]}
 
     def initUI(self):
         """Doc."""
@@ -154,14 +168,10 @@ class MainWindow(QMainWindow):
         Расчет необходимого.
         type_population*base_consumption/(productivity/100)*base_output
         """
-        _value = int(text)
+        _value = float(text)
         _value2 = float(col2)
         col5.setText(f'{round(_value/100*_value2,2)}')
         # добавить значения 3 колонки
-
-    def action2(self, text2, col5):
-        """Doc."""
-        pass
 
     @pyqtSlot()
     def onTextChanged(self):
@@ -176,12 +186,9 @@ class MainWindow(QMainWindow):
 
         self.column5_la.setText(f"{round(popul / (proizv / 100 * col2),2)}")
 
-        # finally:
-        #     self.column5_la.setText(popul/(proizv/100*col2))
-
     def column3_stacked_w(self, text):
         """Doc."""
-        ind = self.table_stackedW.currentIndex()
+        ind = self.regionTable_stackedW.currentIndex()
         _stacked_w_list = self.table_count
         _stacked_w = _stacked_w_list[ind]
         if text == "People":
@@ -193,26 +200,45 @@ class MainWindow(QMainWindow):
 
     def forms_stackedW(self, text):
         """Doc."""
-        ind = self.regionForm_stackedW.currentIndex()
+        ind = self.cityForm_stackedW.currentIndex()
+        # ind2 = self.cityForm_stackedW0.currentIndex()
+        # _city_stacked_w = self.countfrm0.get(ind2)
+        # print(_city_stacked_w)
         _stacked_w = self.stacked_form_count.get((ind, text))
 
+        ############################################## ОСТАНОВИЛСЯ ТУТ <<<---------------------
         if text == "type_1":
             _stacked_w.setCurrentIndex(0)
 
         elif text == "type_2":
             _stacked_w.setCurrentIndex(1)
 
+    def city_select(self, reg, btn_name):
+        """Choose city."""
+        if reg == "Old_World":
+            self.cityForm_stackedW0.setCurrentIndex(self.countslfbtns0.index(self.findChild(QAbstractButton, btn_name.objectName())) + 1)
+            print(self.cityForm_stackedW0.currentIndex())
+
+        # self.regionForm_stackedW.setCurrentIndex(self.count_city)
+
     @pyqtSlot()
-    def add_city(self, pb, layout):
+    def add_city(self, pb: QPushButton, layout, reg: str):
         """Doc."""
         del_widget = QWidget()
         del_box = QHBoxLayout(del_widget)
         del_box.setContentsMargins(0, 0, 0, 0)
         del_box.setSpacing(0)
 
-        self.button2 = PushButton_C("New city \n Population:")
+        self.button2 = PushButton_C("New city \n Population:", self)
         self.button2.setMinimumSize(100, 40)
         self.button -= layout.indexOf(self.button2)
+        self.button2.setObjectName(f"citybtn_{self.button}")
+
+        print("**************************\n" + "ИНДЕКС КНОПКИ НОВОГО ГОРОДА: " + str(self.button))
+
+        self.btn = self.findChild(PushButton_C, f"citybtn_{self.button}")
+        self.btn.clicked.connect(lambda x, btn_name=self.btn: self.city_select(reg, btn_name))
+        print("Кнопка называется: " + self.btn.objectName())
 
         del_button = ToolButton_DC(self.button2)
         del_button.setMinimumSize(10, 10)
@@ -229,14 +255,15 @@ class MainWindow(QMainWindow):
         _stack.insertWidget(self.city_box_2.count() - 1, del_widget)
         _stack.insertWidget(self.button + 1, pb)
 
-        # self.city_select_stacked_w_t.addWidget(self.stacked_table_box)
-        # self.citySelectForm_stackedW.addWidget(self.regionForm_stackedW)
-        # self.button2.clicked.connect(
-        #     lambda: self.city_select_stacked_w_t.setCurrentIndex(
-        #         _stack.count() - 1))
-        # self.button2.clicked.connect(
-        #     lambda: self.citySelectForm_stackedW.setCurrentIndex(
-        #         _stack.count() - 1))
+        if reg == "Old_World":
+            self.count_city.update({"Old_World": f"{int(self.count_city.get('Old_World')[0])+1}"})
+            new_cityform = _setPopulation(self, "Old_World", self.city_stacked_w.currentIndex(), (self.count_city.get("Old_World")[0]))
+            self.countfrm0.insert(0, new_cityform)
+            print("КОЛИЧЕСТВО ГОРОДОВ В РЕГИОНЕ: " + str(self.count_city.get("Old_World")[0]))
+            self.cityForm_stackedW0.addWidget(new_cityform)
+            self.countslfbtns0.insert(0, self.btn)
+            print("В СЛОВАРЕ ЕСТЬ: " + str(self.countslfbtns0))
+            print("КОЛИЧЕСТВО ВИДЖЕТОВ В СТАРОМ МИРЕ: " + str(self.cityForm_stackedW0.count()))
 
     @pyqtSlot()
     def del_city(self, city_widget, del_button):
@@ -255,69 +282,26 @@ class MainWindow(QMainWindow):
             ws.show()
             print("false")
 
-
-
     def closeMWindow(self):
+        """Doc."""
         self.close
+         # СОБЫТИЕ ЗАКРЫТИЯ
+    # def closeEvent(self, event):
+    #     """CLOSE EVENT."""
+    #     reply = QMessageBox.question(
+    #         self, "Message",
+    #         "Are you sure you want to quit? Any unsaved work will be lost.",
+    #         QMessageBox.Save | QMessageBox.Close | QMessageBox.Cancel,
+    #         QMessageBox.Save)
 
-    def closeEvent(self, event):
-        """CLOSE EVENT."""
-        reply = QMessageBox.question(
-            self, "Message",
-            "Are you sure you want to quit? Any unsaved work will be lost.",
-            QMessageBox.Save | QMessageBox.Close | QMessageBox.Cancel,
-            QMessageBox.Save)
+#   def keyPressEvent(self, event):
+    #     if event.key() == Qt.Key_Escape:
+    #         self.close()
 
-        if reply == QMessageBox.Close:
-            event.accept()
-        else:
-            event.ignore()
-
-    def _createActions(self):       # button click actions
-        self.newfileAction = QAction('&New', self)
-        self.newfileAction.setStatusTip('Create new file')
-
-        self.openfileAction = QAction('&Open', self)
-        self.openfileAction.setStatusTip(' Open the existing settings ')
-
-        self.saveAction = QAction('&Save', self)
-        self.saveAction.setStatusTip('Save current settings')
-        self.saveasAction = QAction('&Save as', self)
-        self.saveasAction.setStatusTip('Save current settings \
-                                        in new file or another directory')
-        self.exitAction = QAction(QIcon(':logout_.png'), 'Quit', self)
-        self.exitAction.triggered.connect(self.close)
-        self.exitAction.setShortcut('Ctrl+Q')             # create shortcut
-        self.settings = QAction('& App Settings', self)
-        self.settings.setStatusTip('All settings')
-        self.gvsettings = QAction(QIcon(':conversion.svg'),
-                                  'Game version', self)
-        self.gvsettings.setStatusTip('Change your game version')
-        self.wikiAction = QAction(QIcon(':info_.png'), '&Anno 1800 Wiki', self)
-        self.wikiAction.setStatusTip('Databases of Anno 1800')
-        self.adviceAction = QAction('&Useful advices', self)
-        self.adviceAction.setStatusTip('Give some advice')
-        self.aboutAction = QAction('&About', self)
-        self.aboutAction.setStatusTip('About App')
-
-    def _createMenuBar(self):     # create buttons in Menu Bar
-        menuBar = self.menuBar()
-        fileMenu = QMenu('&File', self)
-        menuBar.addMenu(fileMenu)
-        fileMenu.addAction(self.newfileAction)
-        fileMenu.addAction(self.openfileAction)
-        fileMenu.addAction(self.saveAction)
-        fileMenu.addAction(self.saveasAction)
-        fileMenu.addSeparator()
-        fileMenu.addAction(self.exitAction)
-        settings = menuBar.addMenu('&Settings')
-        settings.addAction(self.settings)
-        settings.addAction(self.gvsettings)
-        helpMenu = menuBar.addMenu('&Help')
-        adviceMenu = helpMenu.addMenu('Help content')
-        adviceMenu.addAction(self.adviceAction)
-        adviceMenu.addAction(self.wikiAction)
-        helpMenu.addAction(self.aboutAction)
+        # if reply == QMessageBox.Close:
+        #     event.accept()
+        # else:
+        #     event.ignore()
 
 
 if __name__ == '__main__':

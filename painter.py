@@ -127,7 +127,7 @@ class Frame_label(QFrame):
     ELIF VALUES: CITY - BG UNDER REGION'S BUTTONS AND LABEL.
     """
 
-    def __init__(self, text, parent=None):
+    def __init__(self, text: str, parent=None):
         """INIT CLASS."""
         QFrame.__init__(self)
 
@@ -177,7 +177,7 @@ class Frame_tp(QFrame):
 class PushButton_TP(QAbstractButton):
     """PAINT TYPE POPULATION BUTTONS. 2 VALUES: PEOPLE, BUILDINGS."""
 
-    def __init__(self, text, parent=None):
+    def __init__(self, text: str, parent=None):
         """INIT CLASS."""
         super(PushButton_TP, self).__init__(parent)
 
@@ -225,7 +225,7 @@ class PushButton_R(QAbstractButton):
     5 VALUES: OLD_WORLD, NEW_WORLD, CAPE_TRELAWNEY, THE ARCTIC, ENBESA.
     """
 
-    def __init__(self, text, parent=None):
+    def __init__(self, text: str, parent=None):
         """INIT CLASS."""
         super(PushButton_R, self).__init__(parent)
 
@@ -279,7 +279,7 @@ class PushButton_R(QAbstractButton):
 class PushButton_F(QAbstractButton):
     """FILTER BUTTON."""
 
-    def __init__(self, text, parent=None):
+    def __init__(self, text: str, parent=None):
         """INIT CLASS."""
         super(PushButton_F, self).__init__(parent)
 
@@ -318,7 +318,7 @@ class PushButton_F(QAbstractButton):
 class PushButton_C(QAbstractButton):
     """PAINT CITY BUTTONS."""
 
-    def __init__(self, text, parent=None):
+    def __init__(self, text: str, parent=None):
         """INIT CLASS."""
         super(PushButton_C, self).__init__(parent)
 
@@ -357,7 +357,7 @@ class PushButton_C(QAbstractButton):
 class PushButton_AC(QAbstractButton):
     """PAINT ADD CITY BUTTON."""
 
-    def __init__(self, text, parent=None):
+    def __init__(self, text: str, parent=None):
         """INIT CLASS."""
         super(PushButton_AC, self).__init__(parent)
 
@@ -426,7 +426,7 @@ class ToolButton_DC(QAbstractButton):
 class PushButton_Settings(QAbstractButton):
     """PAINT SETTINGS BUTTONS."""
 
-    def __init__(self, text, parent=None):
+    def __init__(self, text: str, parent=None):
         """INIT CLASS."""
         super(PushButton_Settings, self).__init__(parent)
 
@@ -474,7 +474,7 @@ class PushButton_Settings(QAbstractButton):
 class PushButton_HC(QAbstractButton):
     """PAINT HIDE AND CLOSE BUTTONS IN SETTINGS TAB."""
 
-    def __init__(self, text, parent=None):
+    def __init__(self, text: str, parent=None):
         """INIT CLASS."""
         super(PushButton_HC, self).__init__(parent)
 
@@ -492,15 +492,15 @@ class PushButton_HC(QAbstractButton):
             self.pixmap = QPixmap(
                 "resources/images/assets/btn_bg/btn_icon60_gray_0.png")
         if self.underMouse():
-            pix = self.pixmap
+            pix: QPixmap = self.pixmap
             painter.setOpacity(0.5)
             painter.drawPixmap(self.rect(), pix)
         elif self.isDown():
-            pix = self.pixmap
+            pix: QPixmap = self.pixmap
             painter.setOpacity(0.9)
             painter.drawPixmap(self.rect(), pix)
         else:
-            pix = self.pixmap
+            pix: QPixmap = self.pixmap
             painter.drawPixmap(self.rect(), pix)
 
         painter.setRenderHint(QPainter.TextAntialiasing)
