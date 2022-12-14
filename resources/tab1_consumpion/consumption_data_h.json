@@ -2,203 +2,203 @@
     "Old_World": [
       {"Fish.webp": [
         "2",
-        "0,0250",
-        "0,0500"
-      ]},
+        {"1_house_tier01.webp": "0,0250"},
+        {"2_house_tier02.webp": "0,0500"}
+        ]},
       {"Schnapps.webp": [
         "2",
-        "0,0333",
-        "0,0667"
-      ]},
+        {"1_house_tier01.webp": "0,0333"},
+        {"2_house_tier02.webp": "0,0667"}
+        ]},
       {"Work_clothes.webp": [
         "2",
-        "0,0308",
-        "0,0615"
-      ]},
+        {"1_house_tier01.webp": "0,0308"},
+        {"2_house_tier02.webp":"0,0615"}
+        ]},
       {"Sausages.webp": [
         "1",
-        "0,0200",
-        "0,0400"
-      ]},
+        {"2_house_tier02.webp": "0,0200"},
+        {"3_house_tier03.webp": "0,0400"}
+        ]},
       {"Bread.webp": [
         "1",
-        "0,0182",
-        "0,0364",
-        "0,5000"
-      ]},
+        {"2_house_tier02.webp": "0,0182"},
+        {"3_house_tier03.webp": "0,0364"},
+        {"7_house_tier7.png": "0,5000"}
+        ]},
       {"Soap.webp": [
         "2",
-        "0,0083",
-        "0,0167"
-      ]},
+        {"2_house_tier02.webp": "0,0083"},
+        {"3_house_tier03.webp": "0,0167"}
+        ]},
       {"Beer.webp": [
         "1",
-        "0,0154",
-        "0,0308"
-      ]},
+        {"2_house_tier02.webp": "0,0154"},
+        {"3_house_tier03.webp": "0,0308"}
+        ]},
       {"Canned_food.webp": [
         "0,667",
-        "0,0103",
-        "0,0205",
-        "0,0600"
-      ]},
+        {"3_house_tier03.webp": "0,0103"},
+        {"4_house_tier04.webp": "0,0205"},
+        {"6_house_tier6.png": "0,0600"}
+        ]},
       {"Sewing_machines.webp":[
         "2",
-        "0,0286",
-        "0,0571"
-      ]},
+        {"3_house_tier03.webp": "0,0286"},
+        {"4_house_tier04.webp": "0,0571"}
+        ]},
       {"Fur_Coats.webp":[
         "2",
-        "0,0267",
-        "0,0533",
-        "1,0000"
-      ]},
+        {"3_house_tier03.webp": "0,0267"},
+        {"4_house_tier04.webp": "0,0533"},
+        {"7_house_tier7.png": "1,0000"}
+        ]},
       {"Glasses.webp":[
-        "0,0267",
-        "0,0533",
-        "1,0000"
-      ]},
+        "0,0667",
+        {"4_house_tier04.webp": "0,0089"},
+        {"5_house_tier05.webp": "0,0178"}
+        ]},
       {"High_wheeler.webp": [
         "2",
-        "0,0250",
-        "0,0500"
-      ]},
+        {"4_house_tier04.webp": "0,0250"},
+        {"5_house_tier05.webp": "0,0500"}
+        ]},
       {"Pocket_watch.webp": [
         "0,667",
-        "0,0078",
-        "0,0157"
-      ]},
+        {"4_house_tier04.webp": "0,0078"},
+        {"5_house_tier05.webp": "0,0157"}
+        ]},
       {"Light_bulb.webp": [
         "1",
-        "0,0125",
-        "0,0250"
-      ]},
+        {"4_house_tier04.webp": "0,0125"},
+        {"5_house_tier05.webp": "0,0250"}
+        ]},
       {"Champagne.webp": [
         "2",
-        "0,0235"
-      ]},
+        {"5_house_tier05.webp": "0,0235"}
+        ]},
       {"Jewelry.webp": [
         "2",
-        "0,0211",
-        "1,0000"
-      ]},
+        {"5_house_tier05.webp": "0,0211"},
+        {"7_house_tier7.png": "1,0000"}
+        ]},
       {"Gramophone.webp": [
         "0,5",
-        "0,0053",
-        "0,0420"
-      ]},
+        {"5_house_tier05.webp": "0,0053"},
+        {"6_house_tier6.png": "0,0420"}
+        ]},
       {"Steam_carriages.webp": [
         "1",
-        "0,0067"
-      ]},
+        {"5_house_tier05.webp": "0,0067"}
+        ]},
       {"Rum.webp": [
         "2",
-        "0,0571",
-        "0,1143",
-        "0,0480"
-      ]},
+        {"3_house_tier03.webp": "0,0571"},
+        {"4_house_tier04.webp": "0,1143"},
+        {"6_house_tier6.png": "0,0480"}
+        ]},
       {"Advanced_rum_roaster.png": [
         "2",
-        "0,0571",
-        "0,1143",
-        "0,0480"
-      ]},
+        {"3_house_tier03.webp": "0,0571"},
+        {"4_house_tier04.webp": "0,1143"},
+        {"6_house_tier6.png": "0,0480"}
+        ]},
       {"Coffee.webp": [
          "2",
-         "0,0471",
-         "0,0941"
-      ]},
+         {"4_house_tier04.webp": "0,0471"},
+         {"5_house_tier05.webp": "0,0941"}
+        ]},
       {"Advanced_coffee_roaster.png": [
         "2",
-        "0,0471",
-        "0,0941"
-      ]},
+        {"4_house_tier04.webp": "0,0471"},
+        {"5_house_tier05.webp": "0,0941"}
+        ]},
       {"Bowler_hats.webp": [
         "2",
-        "0,0480"
-      ]},
+        {"6_house_tier6.png": "0,0480"}
+        ]},
       {"Cigars.webp": [
         "2",
-        "0,0222"
-      ]},
+        {"5_house_tier05.webp": "0,0222"}
+        ]},
       {"Chocolate.webp": [
         "2",
-        "0,0533"
-      ]},
+        {"5_house_tier05.webp": "0,0533"}
+        ]},
       {"Icon_hibiscus_tea_0.webp": [
         "0,667",
-        "0,1050"
-      ]},
+        {"6_house_tier6.png": "0,1050"}
+        ]},
       {"Icon_tapestries_0.webp": [
         "2",
-        "0,0750"
-      ]},
+        {"6_house_tier6.png": "0,0750"}
+        ]},
       {"Icon_wat_stew_0.webp": [
         "1",
-        "0,0900"
-      ]},
+        {"6_house_tier6.png": "0,0900"}
+        ]},
       {"Icon_tobacco_pipes_0.webp": [
         "0,667",
-        "0,0450"
-      ]},
+        {"6_house_tier6.png": "0,0450"}
+        ]},
       {"Icon_leather_shoes_0.webp": [
         "1",
-        "0,1200"
-      ]},
+        {"6_house_tier6.png": "0,1200"}
+        ]},
       {"Icon_suits_0.webp": [
         "1",
-        "0,1650"
-      ]},
+        {"6_house_tier6.png": "0,1650"}
+        ]},
       {"Icon_telephones_0.webp": [
         "0,667",
-        "0,0900"
-      ]},
+        {"6_house_tier6.png": "0,0900"}
+        ]},
       {"Jam.webp": [
         "2",
-        "1,0000"
-      ]},
+        {"7_house_tier7.png": "1,0000"}
+        ]},
       {"Shampoo.webp": [
         "2",
-        "0,5000"
-      ]},
+        {"7_house_tier7.png": "0,5000"}
+        ]},
       {"Lemonade.webp": [
         "2",
-        "1,0000"
-      ]},
+        {"7_house_tier7.png": "1,0000"}
+        ]},
       {"Souvenirs.webp": [
         "2",
-        "2,0000"
-      ]},
+        {"7_house_tier7.png": "2,0000"}
+        ]},
       {"Chewing_Gum.webp": [
         "2",
-        "0,0052",
-        "0,0055"
-      ]},
+        {"4_house_tier04.webp": "0,0052"},
+        {"5_house_tier05.webp": "0,0055"}
+        ]},
       {"Biscuits.webp": [
         "2",
-        "0,0268"
-      ]},
+        {"5_house_tier05.webp": "0,0268"}
+        ]},
       {"Cognac.webp": [
         "1",
-        "0,0110"
-      ]},
+        {"5_house_tier05.webp": "0,0110"}
+        ]},
       {"Typewriters.webp": [
         "2",
-        "0,0080",
-        "0,0140"
-      ]},
+        {"4_house_tier04.webp": "0,0080"},
+        {"5_house_tier05.webp": "0,0140"}
+        ]},
       {"Billiard_Tables.webp": [
         "1",
-        "0,0130"
-      ]},
+        {"5_house_tier05.webp": "0,0130"}
+        ]},
       {"Violins.webp": [
         "1",
-        "0,0030",
-        "0,0032"
+        {"4_house_tier04.webp": "0,0030"},
+        {"5_house_tier05.webp": "0,0032"}
       ]},
       {"Toys.webp": [
         "1",
-        "0,0056"
+        {"5_house_tier05.webp": "0,0056"}
       ]},
       {"House_id": [
         "1_house_tier01.webp",
@@ -209,91 +209,89 @@
         "6_house_tier6.png",
         "7_house_tier7.png"
       ]}
-
     ],
 
     "New_World": [
       {"Fried_plantains.webp": [
         "2",
-        "0,0029",
-        "0,0029",
-        "0,0014",
-        "0,0014"
-      ]},
+        {"8_JornaleroResidence.png": "0,0286"},
+        {"9_ObreroResidence.png": "0,0571"},
+        {"10_Hacienda_Jornalero_Quarters.webp": "0,0286"},
+        {"11_Hacienda_Obrera_Quarters.webp": "0,0571"}
+        ]},
       {"Poncho.webp": [
         "2",
-        "0,0025",
-        "0,0025",
-        "0,0013",
-        "0,0012"
-      ]},
+        {"8_JornaleroResidence.png": "0,250"},
+        {"9_ObreroResidence.png": "0,0500"},
+        {"10_Hacienda_Jornalero_Quarters.webp": "0,0250"},
+        {"11_Hacienda_Obrera_Quarters.webp": "0,0500"}
+        ]},
       {"Tortilla.webp":[
         "2",
-        "0,0014",
-        "0,0007"
-      ]},
+        {"9_ObreroResidence.png": "0,0286"},
+        {"11_Hacienda_Obrera_Quarters.webp": "0,0286"}
+        ]},
       {"Coffee.webp":[
         "2",
-        "0,0006",
-        "0,0003"
-      ]},
+        {"9_ObreroResidence.png": "0,0118"},
+        {"11_Hacienda_Obrera_Quarters.webp": "0,0118"}
+        ]},
       {"Advanced_coffee_roaster.png":[
         "2",
-        "0,0006",
-        "0,0003"
-      ]},
+        {"9_ObreroResidence.png": "0,0118"},
+        {"11_Hacienda_Obrera_Quarters.webp": "0,0118"}
+        ]},
       {"Rum.webp": [
         "2",
-        "0,0014",
-        "0,0014",
-        "0,0007",
-        "0,0007"
-      ]},
+        {"8_JornaleroResidence.png": "0,143"},
+        {"9_ObreroResidence.png": "0,0286"},
+        {"10_Hacienda_Jornalero_Quarters.webp": "0,0143"},
+        {"11_Hacienda_Obrera_Quarters.webp": "0,0286"}
+        ]},
       {"Advanced_rum_roaster.png": [
         "2",
-        "0,0014",
-        "0,0014",
-        "0,0007",
-        "0,0007"
-      ]},
+        {"8_JornaleroResidence.png": "0,143"},
+        {"9_ObreroResidence.png": "0,0286"},
+        {"10_Hacienda_Jornalero_Quarters.webp": "0,0143"},
+        {"11_Hacienda_Obrera_Quarters.webp": "0,0286"}
+        ]},
       {"Beer.webp": [
         "1",
-        "0,0013",
-        "0,0007"
-      ]},
+        {"9_ObreroResidence.png": "0,0267"},
+        {"11_Hacienda_Obrera_Quarters.webp": "0,0267"}
+        ]},
       {"Beer_Hacienda.png": [
         "1",
-        "0,0013",
-        "0,0007"
-
-      ]},
+        {"9_ObreroResidence.png": "0,0267"},
+        {"11_Hacienda_Obrera_Quarters.webp": "0,0267"}
+        ]},
       {"Sewing_machines.webp": [
         "2",
-        "0,0013",
-        "0,0006"
-      ]},
+        {"9_ObreroResidence.png": "0,0250"},
+        {"11_Hacienda_Obrera_Quarters.webp": "0,0250"}
+        ]},
       {"Bowler_hats.webp": [
         "2",
-        "0,0013",
-        "0,0007"
-      ]},
+        {"9_ObreroResidence.png": "0,0267"},
+        {"11_Hacienda_Obrera_Quarters.webp": "0,0267"}
+        ]},
       {"Cigars.webp": [
         "2",
-        "0,0006",
-        "0,0003"
-      ]},
+        {"9_ObreroResidence.png": "0,0111"},
+        {"11_Hacienda_Obrera_Quarters.webp": "0,0111"}
+        ]},
       {"Schnapps_Hacienda.png": [
         "2",
-        "0,0017"
-      ]},
+        {"10_Hacienda_Jornalero_Quarters.webp": "0,0333"}
+        ]},
       {"Atole.webp": [
         "1",
-        "0,0014"
-      ]},
+        {"11_Hacienda_Obrera_Quarters.webp": "0,0571"}
+        ]},
       {"Hot_Sauce.webp": [
         "0,5",
-        "0,0013",
-        "0,0007"
+        {"9_ObreroResidence.png": "0,0250"},
+        {"11_Hacienda_Obrera_Quarters.webp": "0,0286"}
       ]},
       {"House_id": [
         "8_JornaleroResidence.png",
@@ -305,204 +303,204 @@
     "Cape_Trelawney": [
       {"Fish.webp": [
         "2",
-        "0,0250",
-        "0,0500"
-      ]},
+        {"1_house_tier01.webp": "0,0250"},
+        {"2_house_tier02.webp": "0,0500"}
+        ]},
       {"Schnapps.webp": [
         "2",
-        "0,0333",
-        "0,0667"
-      ]},
+        {"1_house_tier01.webp": "0,0333"},
+        {"2_house_tier02.webp": "0,0667"}
+        ]},
       {"Work_clothes.webp": [
         "2",
-        "0,0308",
-        "0,0615"
-      ]},
+        {"1_house_tier01.webp": "0,0308"},
+        {"2_house_tier02.webp":"0,0615"}
+        ]},
       {"Sausages.webp": [
         "1",
-        "0,0200",
-        "0,0400"
-      ]},
+        {"2_house_tier02.webp": "0,0200"},
+        {"3_house_tier03.webp": "0,0400"}
+        ]},
       {"Bread.webp": [
         "1",
-        "0,0182",
-        "0,0364",
-        "0,5000"
-      ]},
+        {"2_house_tier02.webp": "0,0182"},
+        {"3_house_tier03.webp": "0,0364"},
+        {"7_house_tier7.png": "0,5000"}
+        ]},
       {"Soap.webp": [
         "2",
-        "0,0083",
-        "0,0167"
-      ]},
+        {"2_house_tier02.webp": "0,0083"},
+        {"3_house_tier03.webp": "0,0167"}
+        ]},
       {"Beer.webp": [
         "1",
-        "0,0154",
-        "0,0308"
-      ]},
+        {"2_house_tier02.webp": "0,0154"},
+        {"3_house_tier03.webp": "0,0308"}
+        ]},
       {"Canned_food.webp": [
         "0,667",
-        "0,0103",
-        "0,0205",
-        "0,0600"
-      ]},
+        {"3_house_tier03.webp": "0,0103"},
+        {"4_house_tier04.webp": "0,0205"},
+        {"6_house_tier6.png": "0,0600"}
+        ]},
       {"Sewing_machines.webp":[
         "2",
-        "0,0286",
-        "0,0571"
-      ]},
+        {"3_house_tier03.webp": "0,0286"},
+        {"4_house_tier04.webp": "0,0571"}
+        ]},
       {"Fur_Coats.webp":[
         "2",
-        "0,0267",
-        "0,0533",
-        "1,0000"
-      ]},
+        {"3_house_tier03.webp": "0,0267"},
+        {"4_house_tier04.webp": "0,0533"},
+        {"7_house_tier7.png": "1,0000"}
+        ]},
       {"Glasses.webp":[
-        "0,0267",
-        "0,0533",
-        "1,0000"
-      ]},
+        "0,0667",
+        {"4_house_tier04.webp": "0,0089"},
+        {"5_house_tier05.webp": "0,0178"}
+        ]},
       {"High_wheeler.webp": [
         "2",
-        "0,0250",
-        "0,0500"
-      ]},
+        {"4_house_tier04.webp": "0,0250"},
+        {"5_house_tier05.webp": "0,0500"}
+        ]},
       {"Pocket_watch.webp": [
         "0,667",
-        "0,0078",
-        "0,0157"
-      ]},
+        {"4_house_tier04.webp": "0,0078"},
+        {"5_house_tier05.webp": "0,0157"}
+        ]},
       {"Light_bulb.webp": [
         "1",
-        "0,0125",
-        "0,0250"
-      ]},
+        {"4_house_tier04.webp": "0,0125"},
+        {"5_house_tier05.webp": "0,0250"}
+        ]},
       {"Champagne.webp": [
         "2",
-        "0,0235"
-      ]},
+        {"5_house_tier05.webp": "0,0235"}
+        ]},
       {"Jewelry.webp": [
         "2",
-        "0,0211",
-        "1,0000"
-      ]},
+        {"5_house_tier05.webp": "0,0211"},
+        {"7_house_tier7.png": "1,0000"}
+        ]},
       {"Gramophone.webp": [
         "0,5",
-        "0,0053",
-        "0,0420"
-      ]},
+        {"5_house_tier05.webp": "0,0053"},
+        {"6_house_tier6.png": "0,0420"}
+        ]},
       {"Steam_carriages.webp": [
         "1",
-        "0,0067"
-      ]},
+        {"5_house_tier05.webp": "0,0067"}
+        ]},
       {"Rum.webp": [
         "2",
-        "0,0571",
-        "0,1143",
-        "0,0480"
-      ]},
+        {"3_house_tier03.webp": "0,0571"},
+        {"4_house_tier04.webp": "0,1143"},
+        {"6_house_tier6.png": "0,0480"}
+        ]},
       {"Advanced_rum_roaster.png": [
         "2",
-        "0,0571",
-        "0,1143",
-        "0,0480"
-      ]},
+        {"3_house_tier03.webp": "0,0571"},
+        {"4_house_tier04.webp": "0,1143"},
+        {"6_house_tier6.png": "0,0480"}
+        ]},
       {"Coffee.webp": [
          "2",
-         "0,0471",
-         "0,0941"
-      ]},
+         {"4_house_tier04.webp": "0,0471"},
+         {"5_house_tier05.webp": "0,0941"}
+        ]},
       {"Advanced_coffee_roaster.png": [
         "2",
-        "0,0471",
-        "0,0941"
-      ]},
+        {"4_house_tier04.webp": "0,0471"},
+        {"5_house_tier05.webp": "0,0941"}
+        ]},
       {"Bowler_hats.webp": [
         "2",
-        "0,0480"
-      ]},
+        {"6_house_tier6.png": "0,0480"}
+        ]},
       {"Cigars.webp": [
         "2",
-        "0,0222"
-      ]},
+        {"5_house_tier05.webp": "0,0222"}
+        ]},
       {"Chocolate.webp": [
         "2",
-        "0,0533"
-      ]},
+        {"5_house_tier05.webp": "0,0533"}
+        ]},
       {"Icon_hibiscus_tea_0.webp": [
         "0,667",
-        "0,1050"
-      ]},
+        {"6_house_tier6.png": "0,1050"}
+        ]},
       {"Icon_tapestries_0.webp": [
         "2",
-        "0,0750"
-      ]},
+        {"6_house_tier6.png": "0,0750"}
+        ]},
       {"Icon_wat_stew_0.webp": [
         "1",
-        "0,0900"
-      ]},
+        {"6_house_tier6.png": "0,0900"}
+        ]},
       {"Icon_tobacco_pipes_0.webp": [
         "0,667",
-        "0,0450"
-      ]},
+        {"6_house_tier6.png": "0,0450"}
+        ]},
       {"Icon_leather_shoes_0.webp": [
         "1",
-        "0,1200"
-      ]},
+        {"6_house_tier6.png": "0,1200"}
+        ]},
       {"Icon_suits_0.webp": [
         "1",
-        "0,1650"
-      ]},
+        {"6_house_tier6.png": "0,1650"}
+        ]},
       {"Icon_telephones_0.webp": [
         "0,667",
-        "0,0900"
-      ]},
+        {"6_house_tier6.png": "0,0900"}
+        ]},
       {"Jam.webp": [
         "2",
-        "1,0000"
-      ]},
+        {"7_house_tier7.png": "1,0000"}
+        ]},
       {"Shampoo.webp": [
         "2",
-        "0,5000"
-      ]},
+        {"7_house_tier7.png": "0,5000"}
+        ]},
       {"Lemonade.webp": [
         "2",
-        "1,0000"
-      ]},
+        {"7_house_tier7.png": "1,0000"}
+        ]},
       {"Souvenirs.webp": [
         "2",
-        "2,0000"
-      ]},
+        {"7_house_tier7.png": "2,0000"}
+        ]},
       {"Chewing_Gum.webp": [
         "2",
-        "0,0052",
-        "0,0055"
-      ]},
+        {"4_house_tier04.webp": "0,0052"},
+        {"5_house_tier05.webp": "0,0055"}
+        ]},
       {"Biscuits.webp": [
         "2",
-        "0,0268"
-      ]},
+        {"5_house_tier05.webp": "0,0268"}
+        ]},
       {"Cognac.webp": [
         "1",
-        "0,0110"
-      ]},
+        {"5_house_tier05.webp": "0,0110"}
+        ]},
       {"Typewriters.webp": [
         "2",
-        "0,0080",
-        "0,0140"
-      ]},
+        {"4_house_tier04.webp": "0,0080"},
+        {"5_house_tier05.webp": "0,0140"}
+        ]},
       {"Billiard_Tables.webp": [
         "1",
-        "0,0130"
-      ]},
+        {"5_house_tier05.webp": "0,0130"}
+        ]},
       {"Violins.webp": [
         "1",
-        "0,0030",
-        "0,0032"
-      ]},
+        {"4_house_tier04.webp": "0,0030"},
+        {"5_house_tier05.webp": "0,0032"}
+        ]},
       {"Toys.webp": [
         "1",
-        "0,0056"
-      ]},
+        {"5_house_tier05.webp": "0,0056"}
+        ]},
       {"House_id": [
         "1_house_tier01.webp",
         "2_house_tier02.webp",
@@ -512,101 +510,101 @@
         "6_house_tier6.png",
         "7_house_tier7.png"
       ]}
-
     ],
     "The_Arctic": [
       {"Schnapps.webp": [
         "2",
-        "0,0015",
-        "0,0015"
-      ]},
+        {"Icon_research_resource_0.webp":"0,0150"},
+        {"Icon_research_resource_0.webp":"0,0300"}
+        ]},
       {"Canned_food.webp": [
         "0,667",
-        "0,667",
-        "0,0006"
-      ]},
+        {"Icon_research_resource_0.webp":"0,0120"}
+        ]},
       {"Coffee.webp": [
         "2",
-        "0,0012"
-      ]},
+        {"Icon_research_resource_0.webp":"0,0240"}
+        ]},
       {"Advanced_coffee_roaster.png": [
         "2",
-        "0,0012"
-      ]},
+        {"Icon_research_resource_0.webp":"0,0240"}
+        ]},
       {"Pemmican.webp": [
         "1",
-        "0,0012",
-        "0,0012"
-      ]},
+        {"Icon_research_resource_0.webp":"0,0120"},
+        {"Icon_research_resource_0.webp":"0,0240"}
+        ]},
       {"Sleeping_Bags.webp": [
         "1",
-        "0,0009"
-      ]},
+        {"Icon_research_resource_0.webp":"0,0090"},
+        {"Icon_research_resource_0.webp":"0,0180"}
+        ]},
       {"Oil_Lamps.webp": [
         "1",
-        "0,0006"
-      ]},
+        {"Icon_research_resource_0.webp":"0,0060"},
+        {"Icon_research_resource_0.webp":"0,0120"}
+        ]},
       {"Parkas.webp": [
         "0,667",
-        "0,0012"
-      ]},
+        {"Icon_research_resource_0.webp":"0,0240"}
+        ]},
       {"Husky_Sleds.webp": [
         "1",
-        "0,0009"
-      ]},
+        {"Icon_research_resource_0.webp":"0,0180"}
+        ]},
       {"House_id": [
         "Icon_research_resource_0.webp",
         "Icon_research_resource_0.webp"
-      ]}
+        ]}
     ],
     "Enbesa" : [
       {"Icon_goat_milk_0.webp": [
         "1",
-        "0,0300",
-        "0,0600"
-      ]},
+        {"Icon_research_resource_0.webp":"0,0300"},
+        {"Icon_research_resource_0.webp":"0,0600"}
+        ]},
       {"Icon_traditional_clothing_0.webp": [
         "1",
-        "0,0150",
-        "0,0300"
+        {"Icon_research_resource_0.webp":"0,0150"},
+        {"Icon_research_resource_0.webp":"0,0300"}
       ]},
       {"Icon_dried_meat_0.webp": [
         "2",
-        "0,0210",
-        "0,0420"
+        {"Icon_research_resource_0.webp":"0,0210"},
+        {"Icon_research_resource_0.webp":"0,0420"}
       ]},
       {"Icon_hibiscus_tea_0.webp": [
         "0,667",
-        "0,0120",
-        "0,0240"
+        {"Icon_research_resource_0.webp":"0,0120"},
+        {"Icon_research_resource_0.webp":"0,0240"}
       ]},
       {"Icon_ceramics_0.webp": [
         "2",
-        "0,0240"
+        {"Icon_research_resource_0.webp":"0,0240"}
       ]},
       {"Icon_tapestries_0.webp": [
         "2",
-        "0,0240"
+        {"Icon_research_resource_0.webp":"0,0240"}
       ]},
       {"Icon_wat_stew_0.webp": [
         "1",
-        "0,0222"
+        {"Icon_research_resource_0.webp":"0,0222"}
       ]},
       {"Icon_tobacco_pipes_0.webp": [
         "0,667",
-        "0,0090"
+        {"Icon_research_resource_0.webp":"0,0090"}
       ]},
       {"Icon_scriptures_0.webp": [
         "1",
-        "0,0108"
+        {"Icon_research_resource_0.webp":"0,0108"}
       ]},
       {"Icon_lanterns_0.webp": [
         "1",
-        "0,0180"
+        {"Icon_research_resource_0.webp":"0,0180"}
       ]},
       {"Glasses.webp":[
         "0,667",
-        "0,0072"
+        {"Icon_research_resource_0.webp":"0,0072"}
       ]},
       {"House_id": [
         "Icon_research_resource_0.webp",
