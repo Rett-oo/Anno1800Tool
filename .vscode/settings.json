@@ -1,6 +1,0 @@
-{
-    "python.analysis.extraPaths": [
-        "./resourсes"
-    ],
-    "python.analysis.typeCheckingMode": "off"
-}
