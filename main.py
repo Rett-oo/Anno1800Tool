@@ -13,15 +13,15 @@ VariabelNameRole_TypeWidget
 VariabelNameRole_TypeWidget_{VariabelIndex}
 """
 import sys
-from PyQt5.QtCore import pyqtSlot  # noqa
+from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import (QApplication, QDesktopWidget,
                              QGridLayout, QHBoxLayout, QLayout,
                              QMainWindow, QVBoxLayout, QWidget, QStackedWidget)
 import resources
 from painter import *  # noqa
-from resources.settings import Widget_settings  # noqa
-from resources.tab1_consumpion.setpopulationfunc import _setPopulation
+from resources.settings import Widget_settings
+from resources.tab1_consumpion.tpForm import _setPopulation
 
 
 class MainWindow(QMainWindow):
@@ -39,7 +39,7 @@ class MainWindow(QMainWindow):
     #     painter = QPainter(self)
     #     painter.setRenderHint(QPainter.SmoothPixmapTransform)
     #     painter.setPen(QColor("red"))
-    #     painter.drawRect(self.rect())  # noqa
+    #     painter.drawRect(self.rect())
 
         self.button2m_x = 0
         self.buttons_city = []
@@ -49,12 +49,13 @@ class MainWindow(QMainWindow):
                            "New_World": [1]}
 
     def initUI(self):
-        """Doc."""
+        """INIT MAIN FUNC.
+
+        set central widget and his policy, create tob_bar, create tab_stackedW.
+        """
         self.setMinimumSize(800, 600)
         self.setWindowTitle('Anno 1800 tools')
         self.setWindowIcon(QIcon(':Site-logo.webp'))
-        # self.setWindowFlag(Qt.FramelessWindowHint)  # убирает границы окна
-        # self.setAttribute(Qt.WA_TranslucentBackground)  # невидимый фон
         self.setAutoFillBackground(True)
         qr = self.frameGeometry()
         cp = QDesktopWidget().availableGeometry().center()
@@ -92,74 +93,43 @@ class MainWindow(QMainWindow):
 
         main_gbox.addLayout(topBar_hbox, 0, 0, 1, 3)
 
-        def create_top_bar():
-            """Doc.
+        btn_name = ["Consumption \n calculator", "Production\n chains",
+                    "Goods", "Old Nate's\n Workshop",
+                    "Museum,Zoo \nand Garden", "Logistics\n chains", "Cards"]
 
-            Функция создания кнопок для TopBar.
-            """
-            self.consumption_btn = PushButton_tb("Consumption \n calculator")
-            self.consumption_btn.clicked.connect(
-                lambda: self.tab_stackedW.setCurrentIndex(0))
-            production_chains_btn = PushButton_tb("Production\n chains")
-            production_chains_btn.clicked.connect(
-                lambda: self.tab_stackedW.setCurrentIndex(1))
-            products_btn = PushButton_tb("Goods")
-            products_btn.clicked.connect(
-                lambda: self.tab_stackedW.setCurrentIndex(2))
-            NateWorkshop_btn = PushButton_tb("Old Nate's\n Workshop")
-            NateWorkshop_btn.clicked.connect(
-                lambda: self.tab_stackedW.setCurrentIndex(3))
-            NateWorkshop_btn.setObjectName("NateWorkshop_btn")
-            MZG_btn = PushButton_tb("Museum,Zoo \nand Garden")
-            MZG_btn.clicked.connect(
-                lambda: self.tab_stackedW.setCurrentIndex(4))
-            logistics_btn = PushButton_tb("Logistics\n chains")
-            logistics_btn.clicked.connect(
-                lambda: self.tab_stackedW.setCurrentIndex(5))
-            cards_btn = PushButton_tb("Cards")
-            cards_btn.clicked.connect(
-                lambda: self.tab_stackedW.setCurrentIndex(6))
-            settings_btn = PushButton_si("settings")
-            settings_btn.setFixedSize(30, 30)
-            settings_btn.clicked.connect(self.open_settings)
+        def create_top_bar(name, index):
+            btn = PushButton_tb(name)
+            btn.clicked.connect(
+                lambda: self.tab_stackedW.setCurrentIndex(index))
+            btn.setMinimumSize(90, 40)
+            topBarBtn_hbox.addWidget(btn)
 
-            info_btn = PushButton_si("info")
-            info_btn.setFixedSize(30, 30)
-            settingsInfo_vbox.addWidget(settings_btn)
-            settingsInfo_vbox.addWidget(info_btn)
+        for i in btn_name:
+            create_top_bar(i, btn_name.index(i))
 
-            tabs_list = (self.consumption_btn, production_chains_btn,
-                         products_btn, NateWorkshop_btn,
-                         MZG_btn, logistics_btn, cards_btn)
-            for tabs in tabs_list:
-                tabs.setMinimumSize(90, 40)
-                topBarBtn_hbox.addWidget(tabs)
+        def create_si_btn(name) -> QAbstractButton:
+            btn = PushButton_si(name)
+            btn.setFixedSize(30, 30)
+            settingsInfo_vbox.addWidget(btn)
+            return btn
 
-        create_top_bar()
-        # Создание QStackedWidget для всех Tab
+        create_si_btn("settings").clicked.connect(self.open_settings)
+        create_si_btn("info")
 
         def create_stucked_w():
-
             self.tab_stackedW = QStackedWidget()
-
-            self.cons_tab = resources._consumptiontab(self)
-            self.production_chains_tab = resources.production_chains(self)
-            self.goods_tab = resources.goods(self)
-            self.on_workshop = resources.old_Nate_workshop(self)
-            self.mzg = resources.mzg(self)
-            self.logistics_chains = resources.logistics_chains(self)
-            self.cards_tab = resources.cards_tab(self)
-
-            self.tab_stackedW.addWidget(self.cons_tab)
-            self.tab_stackedW.addWidget(self.production_chains_tab)
-            self.tab_stackedW.addWidget(self.goods_tab)
-            self.tab_stackedW.addWidget(self.on_workshop)
-            self.tab_stackedW.addWidget(self.mzg)
-            self.tab_stackedW.addWidget(self.logistics_chains)
-            self.tab_stackedW.addWidget(self.cards_tab)
-
             main_gbox.addWidget(self.tab_stackedW, 1, 0, 1, 3)
 
+            tabs_list = [resources._consumptiontab(self),
+                         resources.production_chains(self),
+                         resources.goods(self),
+                         resources.old_Nate_workshop(self),
+                         resources.mzg(self),
+                         resources.logistics_chains(self),
+                         resources.cards_tab(self)]
+
+            for i in tabs_list:
+                self.tab_stackedW.addWidget(i)
         create_stucked_w()
 
     def action1(self, text, col5, col2):
@@ -177,13 +147,18 @@ class MainWindow(QMainWindow):
     def onTextChanged(self):
         """Doc."""
         try:
-            popul = int(self.edit_.text())
+            popul = float(int(self.edit_.text()))
         except ValueError:
             self.edit_.setText("0")
             popul = 0
-        proizv = int(self.column4_le.text())
-        col2 = int(self.column2_text.text())
-
+        proizv = float(self.column4_le.text())
+        try:
+            col2 = float(self.column2_text.text())
+        except ValueError:
+            col2 = self.column2_text.text()
+            print(col2)
+            col2.replace(",", ".")
+            float(int(col2))
         self.column5_la.setText(f"{round(popul / (proizv / 100 * col2),2)}")
 
     def column3_stacked_w(self, text):
@@ -206,7 +181,7 @@ class MainWindow(QMainWindow):
         # print(_city_stacked_w)
         _stacked_w = self.stacked_form_count.get((ind, text))
 
-        ############################################## ОСТАНОВИЛСЯ ТУТ <<<---------------------
+        # ОСТАНОВИЛСЯ ТУТ <<<---------------------
         if text == "type_1":
             _stacked_w.setCurrentIndex(0)
 
@@ -216,7 +191,9 @@ class MainWindow(QMainWindow):
     def city_select(self, reg, btn_name):
         """Choose city."""
         if reg == "Old_World":
-            self.cityForm_stackedW0.setCurrentIndex(self.countslfbtns0.index(self.findChild(QAbstractButton, btn_name.objectName())) + 1)
+            self.cityForm_stackedW0.setCurrentIndex(
+                self.countslfbtns0.index(self.findChild(
+                    QAbstractButton, btn_name.objectName())) + 1)
             print(self.cityForm_stackedW0.currentIndex())
 
         # self.regionForm_stackedW.setCurrentIndex(self.count_city)
@@ -234,10 +211,11 @@ class MainWindow(QMainWindow):
         self.button -= layout.indexOf(self.button2)
         self.button2.setObjectName(f"citybtn_{self.button}")
 
-        print("**************************\n" + "ИНДЕКС КНОПКИ НОВОГО ГОРОДА: " + str(self.button))
+        print("**\n" + "ИНДЕКС КНОПКИ НОВОГО ГОРОДА: " + str(self.button))
 
         self.btn = self.findChild(PushButton_C, f"citybtn_{self.button}")
-        self.btn.clicked.connect(lambda x, btn_name=self.btn: self.city_select(reg, btn_name))
+        self.btn.clicked.connect(
+            lambda x, btn_name=self.btn: self.city_select(reg, btn_name))
         print("Кнопка называется: " + self.btn.objectName())
 
         del_button = ToolButton_DC(self.button2)
@@ -256,14 +234,19 @@ class MainWindow(QMainWindow):
         _stack.insertWidget(self.button + 1, pb)
 
         if reg == "Old_World":
-            self.count_city.update({"Old_World": f"{int(self.count_city.get('Old_World')[0])+1}"})
-            new_cityform = _setPopulation(self, "Old_World", self.city_stacked_w.currentIndex(), (self.count_city.get("Old_World")[0]))
+            self.count_city.update(
+                {"Old_World": f"{int(self.count_city.get('Old_World')[0])+1}"})
+            new_cityform = _setPopulation(
+                self, "Old_World", self.city_stacked_w.currentIndex(), (
+                    self.count_city.get("Old_World")[0]))
             self.countfrm0.insert(0, new_cityform)
-            print("КОЛИЧЕСТВО ГОРОДОВ В РЕГИОНЕ: " + str(self.count_city.get("Old_World")[0]))
+            print("КОЛИЧЕСТВО ГОРОДОВ В РЕГИОНЕ: " + str(
+                self.count_city.get("Old_World")[0]))
             self.cityForm_stackedW0.addWidget(new_cityform)
             self.countslfbtns0.insert(0, self.btn)
             print("В СЛОВАРЕ ЕСТЬ: " + str(self.countslfbtns0))
-            print("КОЛИЧЕСТВО ВИДЖЕТОВ В СТАРОМ МИРЕ: " + str(self.cityForm_stackedW0.count()))
+            print("КОЛИЧЕСТВО ВИДЖЕТОВ В СТАРОМ МИРЕ: " + str(
+                self.cityForm_stackedW0.count()))
 
     @pyqtSlot()
     def del_city(self, city_widget, del_button):
@@ -285,7 +268,7 @@ class MainWindow(QMainWindow):
     def closeMWindow(self):
         """Doc."""
         self.close
-         # СОБЫТИЕ ЗАКРЫТИЯ
+        # СОБЫТИЕ ЗАКРЫТИЯ
     # def closeEvent(self, event):
     #     """CLOSE EVENT."""
     #     reply = QMessageBox.question(
