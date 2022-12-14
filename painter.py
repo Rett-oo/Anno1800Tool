@@ -315,6 +315,45 @@ class PushButton_F(QAbstractButton):
         self.update()
 
 
+class PushButton_G(QAbstractButton):
+    """GOODS BUTTON."""
+
+    def __init__(self, text: str, parent=None):
+        """INIT CLASS."""
+        super(PushButton_G, self).__init__(parent)
+
+        self.pixmap = QPixmap(
+            "resources/images/assets/btn_bg/btn_goods_normal_0.png")
+        self.pixmap_hover = QPixmap(
+            "resources/images/assets/btn_bg/btn_goods_noninteractive_0.png")
+        self.pixmap_clicked = QPixmap(
+            "resources/images/assets/btn_bg/btn_dropdown_closed_0.png")
+        self.setCheckable(True)
+        self.icon = QPixmap(":" + text).scaled(
+            30, 30, transformMode=Qt.SmoothTransformation)
+
+    def paintEvent(self, event):
+        """PAINT EVENT."""
+        pix = self.pixmap_hover if self.underMouse() else self.pixmap
+        if self.isDown():
+            pix = self.pixmap_clicked
+            rect = QRect(12.5, 8, 28, 28)
+        else:
+            rect = QRect(12.5, 8, 30, 30)
+        painter = QPainter(self)
+        painter.setRenderHint(QPainter.SmoothPixmapTransform)
+        painter.drawPixmap(self.rect(), pix)
+        painter.drawPixmap(rect, self.icon)
+
+    def enterEvent(self, event):
+        """MOUSE ON BUTTON EVENT."""
+        self.update()
+
+    def leaveEvent(self, event):
+        """MOUSE LEAVE BUTTON EVENT."""
+        self.update()
+
+
 class PushButton_C(QAbstractButton):
     """PAINT CITY BUTTONS."""
 
