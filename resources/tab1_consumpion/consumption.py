@@ -12,7 +12,7 @@ sys.path.append(os.path.abspath('resources/tab1_consumpion'))
 from resources import gui_icons  # noqa
 from table import _createtable  # noqa
 from painter import *  # noqa
-from resources.tab1_consumpion.setpopulationfunc import _setPopulation
+from resources.tab1_consumpion.tpForm import _setPopulation
 
 with open("resources\\tab1_consumpion\\consumption_data_p.json") as p:
     json_table = json.load(p)
