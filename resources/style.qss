@@ -1,9 +1,21 @@
-/* background-origin - where bg applyed: in borders - border-box, before borders padding-box, content-box */
-
 QMainWindow {
 	border-image: url("resources/images/assets/bg/bg_window_bg_expedition_base_0.png") 0 0 0 0;
 }
 
+QLineEdit {
+	background-image: url(resources/images/assets/btn_bg/bg_edit_field_0.png);
+	border: 1px solid #99927d;
+	border-radius: 3px ;
+	font-family: Heuristica;
+	font-style: Italic;
+	font-width Bold;
+	font-size: 14px;
+	selection-background-color: #666154;
+}
+#search_e {
+	background: url("resources/images/assets/btn_bg/bg_edit_field_0.png");
+}
+/* TABLE PROPERTIES */
 QHeaderView::section {
 	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1.25,
                                       stop:0 #563721, stop: 0.6 #664127, stop:1 #805130);
@@ -11,21 +23,18 @@ QHeaderView::section {
 	border-right: 2px solid #dbe48b;
 	border-top: 2px solid #dbe48b;
 	border-left: 2px solid #dbe48b;
-	font-family: Roboto ;
-	font-style: Regular;
 }
-QLineEdit {
-	background-image: url(resources/images/assets/btn_bg/bg_edit_field_0.png);
-	border: 1px solid #99927d;
-	border-radius: 3px ;
-	font-family: Heuristica;
-	font-style: Bold Italic;
-	font-size: 14px;
-	selection-background-color: #666154;
+/* CITY SCROLL AREA PROPERTIES */
+#City_widget {
+	background-color: transparent;
+	border: transparent;
 }
-#search_e {
-	background: url("resources/images/assets/btn_bg/bg_edit_field_0.png");
+
+#Scroll_Area {
+	background-color: transparent;
+	border: transparent;
 }
+
 QScrollBar:vertical {
     border: none;
     background: transparent;
@@ -47,42 +56,11 @@ QScrollBar::sub-line:vertical {
     subcontrol-position: top;
     subcontrol-origin: margin;
 }
-
 QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {
     background: none;
 }
 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
     background: none;
 }
-
-#Scroll_Area {
-	background-color: transparent;
-	border: transparent;
-}
-#City_widget {
-	background-color: transparent;
-	border: transparent;
-}
-#Table {
-	font-size: 14px;
-}
-#Type_of_population {
-	font-size: 20px;
-	font-family: Roboto ;
-	font-style: Italic;
-}
-#Requirements {
-	font-size: 20px;
-	font-family: Roboto ;
-	font-style: Italic;
-}
-#City {
-	font-size: 20px;
-	font-family: Roboto ;
-	font-style: Italic;
-}
-
-
-
 
 
